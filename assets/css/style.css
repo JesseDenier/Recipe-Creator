@@ -1,4 +1,7 @@
 *{
     background-color: darkblue;
     color: white;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
