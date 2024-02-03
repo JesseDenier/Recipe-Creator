@@ -16,7 +16,14 @@ const ingredientArray = [
 ];
 
 // Converts ingredientArray into a single string with the correct punctuation between each ingredient to be inserted as an API fetch parameter.
-const spoonIngredientString = ingredientArray.map(String).join(",+");
+let spoonIngredientString = ingredientArray.map(String).join(",+");
+
+// Removes all recipes from JSON data that have more than 1 "missedIngredients."
+function spoonFilterRecipes(data) {
+  return data.filter(function (recipe) {
+    return recipe.missedIngredients.length <= 1;
+  });
+}
 
 // Fetches data for recipes within the following parameters:
 // List up to 100 recipes.
@@ -33,9 +40,9 @@ fetch(
   .then(function (response) {
     return response.json();
   })
-  // Prints the JSON data to the console.
-  // TODO: Create a function that checks if there are any "missedIngredients" objects in the returned recipe and remove those recipes from the array.
+  // Prints the JSON data to the console after calling the "spoonFilterRecipes" function.
   // TODO: Have the data create HTML elements instead of printing to the console.
   .then(function (data) {
-    console.log(data);
+    let spoonFilteredRecipes = spoonFilterRecipes(data);
+    console.log(spoonFilteredRecipes);
   });
