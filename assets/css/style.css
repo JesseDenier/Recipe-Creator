@@ -1,7 +1,29 @@
 *{
-    background-color: darkblue;
+    background-color: rgb(74, 74, 138);
     color: white;
     justify-content: center;
     align-items: center;
     text-align: center;
+    font-family: "Times New Roman", Times, serif;
+    font-size: x-large;
 }
+
+.button{
+    background-color: rgb(215, 58, 200);
+    color: black;
+    font-size: x-large;
+}
+
+#ingredientInput{
+    background-color: rgb(87, 228, 224);
+    color: black;
+      
+}
+
+::placeholder {
+    color: rgb(24, 2, 2);
+    opacity: 1; /* Firefox */
+  }
+  h1{
+    font-size: xx-large;
+  }
