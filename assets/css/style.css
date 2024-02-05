@@ -1,23 +1,18 @@
 *{
-    background-color: rgb(74, 74, 138);
-    color: white;
+    background-color: rgb(239, 239, 239);
+    color: rgb(242, 138, 138);
     justify-content: center;
     align-items: center;
     text-align: center;
     font-family: "Times New Roman", Times, serif;
-    font-size: x-large;
+    font-size: large;
 }
 
-.button{
-    background-color: rgb(215, 58, 200);
-    color: black;
-    font-size: x-large;
-}
 
 #ingredientInput{
-    background-color: rgb(87, 228, 224);
+    background-color: rgb(160, 209, 161);
     color: black;
-      
+    font-size: medium;
 }
 
 ::placeholder {
@@ -26,4 +21,8 @@
   }
   h1{
     font-size: xx-large;
+  }
+
+  h2{
+    font-size: x-large
   }
