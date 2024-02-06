@@ -5,8 +5,11 @@ const userIngredientInput = document.getElementById("ingredientInput");
 // Initializes an empty array.
 let ingredientArray = [];
 
-// Saves the private API Key for spoonacular.
+// Saves the private API Key for spoonacular. Saves the private API Key and API Id for edamam.
+
 const spoonacularAPIKey = "de07b56c97684defbae6bc906f8a5352";
+const edamamAPIKey = "bcbb167d1766a0e612f1bb055f2ac680";
+const edamamAPIId = "dc99804d";
 
 // Removes all recipes from Spoon JSON data that have more than 1 "missedIngredients."
 function spoonFilterRecipes(data) {
@@ -42,10 +45,23 @@ function spoonFetch() {
     });
 }
 
+function edamamFetch(){
+  let edamamIngredientString = ingredientArray.map(String).join("%2C%20");
+  fetch("https://api.edamam.com/api/recipes/v2?type=public&q=" + edamamIngredientString + "&app_id=" +
+ edamamAPIId +
+ "&app_key=" +
+ edamamAPIKey
+)
+.then(response => response.json())
+.then(function (data) {
+  console.log(data);
+})}
+
 // Attaches a click event to searchBtn.
 searchBtn.addEventListener("click", function () {
   // Fills the empty ingredientArray with the users input.
   ingredientArray = userIngredientInput.value.split(", ");
-  // Calls the spoonFetch function.
+  // Calls the Fetch functions.
   spoonFetch();
+  edamamFetch();
 });
