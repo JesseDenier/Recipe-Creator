@@ -9,12 +9,6 @@
 }
 
 
-#ingredientInput{
-    background-color: rgb(160, 209, 161);
-    color: black;
-    font-size: medium;
-}
-
 ::placeholder {
     color: rgb(24, 2, 2);
     opacity: 1; /* Firefox */
