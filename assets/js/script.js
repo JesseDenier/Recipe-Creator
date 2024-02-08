@@ -99,8 +99,8 @@ function edamamCreateCard(recipe) {
 
 // Takes the value created with the edamamSearchBtn click event and fetches the correct data.
 function edamamFetch() {
-  // Converts ingredientArray into a single string to be inserted as an API fetch parameter.
-  let edamamIngredientString = edamamIngredientArray.map(String);
+  // Converts ingredientArray into a single string with the correct punctuation between each ingredient to be inserted as an API fetch parameter.
+  let edamamIngredientString = edamamIngredientArray.map(String).join("%2C%20");
   // Fetches data for recipes within the following parameters:
   // Only find public recipes.
   // Recipes need to involve the ingredient user inputed.
