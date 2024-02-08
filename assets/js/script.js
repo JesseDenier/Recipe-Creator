@@ -23,15 +23,15 @@ function spoonFilterRecipes(data) {
   });
 }
 
-// This function creates a recipe card
+// Creates a recipe card based on spoonFetch data.
 function spoonCreateCard(recipe) {
   // Create a div element for the recipe card
   const card = document.createElement("div");
   card.classList.add("recipe-card");
-   // Create an h2 element for the recipe name
-   const recipeName = document.createElement("h2");
-   recipeName.textContent = recipe.title; // not a name variable in JSON
-   // Create a ul element for the ingredients list
+  // Create an h2 element for the recipe name
+  const recipeName = document.createElement("h2");
+  recipeName.textContent = recipe.title; // not a name variable in JSON
+  // Create a ul element for the ingredients list
   const ingredientsList = document.createElement("ul");
   // Iterate over the ingredients and create li elements for each
   recipe.usedIngredients.forEach((ingredient) => {
@@ -44,9 +44,9 @@ function spoonCreateCard(recipe) {
   card.appendChild(ingredientsList);
   // Append the card to the document or a specific container
   document.body.appendChild(card); // Adjust this line based on where you want to append the cards
-  }
+}
 
-// Take value created with the searchBtn click event and fetches the correct data.
+// Take value created with the spoonSearchBtn click event and fetches the correct data.
 function spoonFetch() {
   // Converts ingredientArray into a single string with the correct punctuation between each ingredient to be inserted as an API fetch parameter.
   let spoonIngredientString = spoonIngredientArray.map(String).join(",+");
@@ -76,6 +76,29 @@ function spoonFetch() {
     });
 }
 
+// This function creates a recipe card
+function edamamCreateCard(recipe) {
+  // Create a div element for the recipe card
+  const card = document.createElement("div");
+  card.classList.add("recipe-card");
+  // Create an h2 element for the recipe name
+  const recipeName = document.createElement("h2");
+  recipeName.textContent = recipe.recipe.label; // not a name variable in JSON
+  // Create a ul element for the ingredients list
+  const ingredientsList = document.createElement("ul");
+  // Iterate over the ingredients and create li elements for each
+  recipe.recipe.ingredients.forEach((ingredient) => {
+    const ingredientItem = document.createElement("li");
+    ingredientItem.textContent = ingredient.food;
+    ingredientsList.appendChild(ingredientItem);
+  });
+  // Append the recipe name and ingredients list to the card
+  card.appendChild(recipeName);
+  card.appendChild(ingredientsList);
+  // Append the card to the document or a specific container
+  document.body.appendChild(card); // Adjust this line based on where you want to append the cards
+}
+
 function edamamFetch() {
   let edamamIngredientString = edamamIngredientArray.map(String).join("%2C%20");
   fetch(
@@ -91,7 +114,11 @@ function edamamFetch() {
       return response.json();
     })
     .then(function (data) {
-      console.log(data);
+      let edamamFilteredRecipes = data.hits;
+      console.log(edamamFilteredRecipes);
+      edamamFilteredRecipes.forEach((recipe) => {
+        edamamCreateCard(recipe);
+      }); // Close the forEach function
     });
 }
 
@@ -102,7 +129,6 @@ spoonSearchBtn.addEventListener("click", function () {
   // Calls the Fetch function.
   spoonFetch();
 });
-
 
 // Attaches a click event to Edamam Search Button.
 edamamSearchBtn.addEventListener("click", function () {
