@@ -111,4 +111,3 @@ edamamSearchBtn.addEventListener("click", function () {
   // Calls the Fetch function.
   edamamFetch();
 });
-
