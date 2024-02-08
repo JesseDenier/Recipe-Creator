@@ -3,15 +3,19 @@
 }
 
 .color-white{
- background-color: rgb(239, 239, 239);
+ background-color: rgba(138, 207, 169, 0.486);
 }
 
-.text-color-pink{
-  color: rgb(242, 138, 138);
+.text-color-green{
+  color: #335449;
 }
 
 .color-primary{
-  background-color: #65fe08;
+  background-color: #C1A7B3;
+}
+
+.text-color-pink{
+  color: #a55265;
 }
 
 footer{
