@@ -12,7 +12,7 @@ let spoonIngredientArray = [];
 let edamamIngredientArray = [];
 
 // Saves the private API info
-const spoonacularAPIKey = "de07b56c97684defbae6bc906f8a5352";
+const spoonacularAPIKey = "b1e8d5af6d6f4efaaa60746bf1c9cd8c";
 const edamamAPIKey = "bcbb167d1766a0e612f1bb055f2ac680";
 const edamamAPIId = "dc99804d";
 
@@ -22,6 +22,29 @@ function spoonFilterRecipes(data) {
     return recipe.missedIngredients.length <= 0;
   });
 }
+
+// This function creates a recipe card
+function spoonCreateCard(recipe) {
+  // Create a div element for the recipe card
+  const card = document.createElement("div");
+  card.classList.add("recipe-card");
+   // Create an h2 element for the recipe name
+   const recipeName = document.createElement("h2");
+   recipeName.textContent = recipe.title; // not a name variable in JSON
+   // Create a ul element for the ingredients list
+  const ingredientsList = document.createElement("ul");
+  // Iterate over the ingredients and create li elements for each
+  recipe.usedIngredients.forEach((ingredient) => {
+    const ingredientItem = document.createElement("li");
+    ingredientItem.textContent = ingredient.name; // Assuming the ingredient object has a 'name' property
+    ingredientsList.appendChild(ingredientItem);
+  });
+  // Append the recipe name and ingredients list to the card
+  card.appendChild(recipeName);
+  card.appendChild(ingredientsList);
+  // Append the card to the document or a specific container
+  document.body.appendChild(card); // Adjust this line based on where you want to append the cards
+  }
 
 // Take value created with the searchBtn click event and fetches the correct data.
 function spoonFetch() {
@@ -47,6 +70,9 @@ function spoonFetch() {
     .then(function (data) {
       let spoonFilteredRecipes = spoonFilterRecipes(data);
       console.log(spoonFilteredRecipes);
+      spoonFilteredRecipes.forEach((recipe) => {
+        spoonCreateCard(recipe);
+      });
     });
 }
 
@@ -77,6 +103,7 @@ spoonSearchBtn.addEventListener("click", function () {
   spoonFetch();
 });
 
+
 // Attaches a click event to Edamam Search Button.
 edamamSearchBtn.addEventListener("click", function () {
   // Fills the empty ingredient arrays with the users input.
@@ -84,3 +111,4 @@ edamamSearchBtn.addEventListener("click", function () {
   // Calls the Fetch function.
   edamamFetch();
 });
+
