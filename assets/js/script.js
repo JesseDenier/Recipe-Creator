@@ -112,3 +112,10 @@ edamamSearchBtn.addEventListener("click", function () {
   edamamFetch();
 });
 
+//pop up window - Welcome message
+$(document).ready(function() {
+  $('#popup').show();
+  $('#closePopup').click(function() {
+    $('#popup').hide();
+  });
+});
