@@ -13,51 +13,65 @@
     <!-- Links custom CSS. -->
     <link rel="stylesheet" href="assets/css/style.css" />
   </head>
-  <body class="color-white">
-    <header class="color-primary">
-      <h1 class="text-center large-text text-color-pink">Recipe Creator</h1>
+  <body class="color-secondary">
+    <!-- Header-->
+    <header class="color-primary text-center top-bar">
+      <h1 class="large-text text-color-pink">Recipe Creator</h1>
     </header>
+    <!-- Main -->
     <main class="row">
+      <!-- Spoon Column -->
       <article class="medium-6 columns text-center">
-    <!-- Spoon Input-->
-      <p class="text-center medium-text text-color-green">
-        Enter all the ingredients you have available below.<br />*Seperate each
-        ingredient with a comma and space.
-      </p>
-      <input
-        placeholder="Ingredients in Pantry"
-        class="text-center cell panel callout primary"
-        id="spoonIngredientInput"
-      />
-      <!-- Spoon Search button-->
-      <button id="spoonRecipeSearchBtn" class="button large">Search</button>
-  </article>
-  <article class="medium-6 columns text-center">
-    <!-- Edamam Input-->
-      <p class="text-center medium-text text-color-green">
-        Enter an ingredient you would like a recipe from below:<br />*Enter just
-        one ingredient.
-      </p>
-      <input
-        placeholder="Ingredient to Build From"
-        class="text-center cell panel callout primary"
-        id="edamamIngredientInput"
-      />
-      <!-- Edamam Search button-->
-      <button id="edamamRecipeSearchBtn" class="button large">Search</button>
-  </article>
-  </main>
-    <footer class="row color-primary text-center text-color-pink">
+        <p>If you don't want to go to the grocery store use this side!</p>
+        <img class="column-image" src="assets/imgs/Pantry.png" />
+        <p class="text-center medium-text text-color-green">
+          Enter all the ingredients you have available below.<br />*Seperate
+          each ingredient with a comma and space.
+        </p>
+        <input
+          placeholder="Ingredients in Pantry"
+          class="text-center cell panel callout primary"
+          id="spoonIngredientInput"
+        />
+        <button
+          id="spoonRecipeSearchBtn"
+          class="color-pink button large expanded"
+        >
+          Search
+        </button>
+      </article>
+      <!-- Edamam Column -->
+      <article class="medium-6 columns text-center">
+        <p>If you're feeling adventurous with 1 ingredient use this side!</p>
+        <img class="column-image" src="assets/imgs/Idea.png" />
+        <p class="text-center medium-text text-color-green">
+          Enter an ingredient you would like a recipe from below:<br />*Enter
+          just one ingredient.
+        </p>
+        <input
+          placeholder="Ingredient to Build From"
+          class="text-center cell panel callout primary"
+          id="edamamIngredientInput"
+        />
+        <button
+          id="edamamRecipeSearchBtn"
+          class="color-pink button large expanded"
+        >
+          Search
+        </button>
+      </article>
+    </main>
+    <!-- Footer -->
+    <footer class="row color-primary text-center">
       <h2 class="medium-6"></h2>
-      Footer Information
+      Created by Jesse Denier, Jenny Munar, Eddie Montoya, Claire Shipley, and
+      Sadie Thongsavanh.
     </footer>
     <!--Links Jquery JS. -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <!-- Links Foundation JS. -->
-    <script
-      src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"
-    ></script>
-      
+    <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
+
     <!-- Links custom JS. -->
     <script src="assets/js/script.js"></script>
   </body>
