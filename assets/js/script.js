@@ -1,9 +1,3 @@
-// Links the HTML inputs and buttons to the JS.
-const spoonIngredientInput = document.getElementById("spoonIngredientInput");
-const spoonSearchBtn = document.getElementById("spoonRecipeSearchBtn");
-const edamamIngredientInput = document.getElementById("edamamIngredientInput");
-const edamamSearchBtn = document.getElementById("edamamRecipeSearchBtn");
-
 // Initializes empty arrays.
 let spoonIngredientArray = [];
 let edamamIngredientArray = [];
@@ -200,17 +194,17 @@ function edamamFetch() {
 }
 
 // Attaches a click event to Spoon Search Button.
-spoonSearchBtn.addEventListener("click", function () {
+$("#spoonRecipeSearchBtn").on("click", function () {
   // Fills the empty ingredient arrays with the users input.
-  spoonIngredientArray = spoonIngredientInput.value.split(", ");
+  spoonIngredientArray = $("#spoonIngredientInput").val().split(", ");
   // Calls the Fetch function.
   spoonFetch();
 });
 
 // Attaches a click event to Edamam Search Button.
-edamamSearchBtn.addEventListener("click", function () {
+$("#edamamRecipeSearchBtn").on("click", function () {
   // Fills the empty ingredient arrays with the users input.
-  edamamIngredientArray = edamamIngredientInput.value.split(", ");
+  edamamIngredientArray = $("#edamamIngredientInput").val().split(", ");
   // Calls the Fetch function.
   edamamFetch();
 });
