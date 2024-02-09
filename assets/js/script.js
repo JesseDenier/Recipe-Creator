@@ -53,9 +53,9 @@ function spoonCreateCard(recipe) {
   // Creates an h3 element with titling the ingredient list to go in recipe card.
   const ingredientListTitle = $("<h3>")
     .text("Ingredients")
-    .addClass("text-lg text-pink-500 underline");
+    .addClass("text-lg text-pink-500 text-left");
   // Create a ul element for the ingredients list.
-  const ingredientList = $("<ul>").addClass("list-disc");
+  const ingredientList = $("<ul>").addClass("text-left");
   // Iterate over the ingredients and create li elements for each.
   recipe.usedIngredients.forEach((ingredient) => {
     const ingredientItem = $("<li>").text(ingredient.name);
@@ -119,9 +119,9 @@ function edamamCreateCard(recipe) {
   // Creates an h3 element with titling the ingredient list to go in recipe card.
   const ingredientListTitle = $("<h3>")
     .text("Ingredients")
-    .addClass("text-lg text-pink-500 underline");
+    .addClass("text-lg text-pink-500 text-left");
   // Creates a ul element for the ingredients list to get in recipe card.
-  const ingredientList = $("<ul>").addClass("list-disc");
+  const ingredientList = $("<ul>").addClass("text-left");
   // Iterates over the ingredients and create li elements for each to get in ingredientList.
   recipe.recipe.ingredients.forEach((ingredient) => {
     const ingredientItem = $("<li>").text(ingredient.food);
