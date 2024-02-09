@@ -7,24 +7,31 @@ const spoonacularAPIKey = "b1e8d5af6d6f4efaaa60746bf1c9cd8c";
 const edamamAPIKey = "bcbb167d1766a0e612f1bb055f2ac680";
 const edamamAPIId = "dc99804d";
 
-// Hides all input and search elements until the user selects one, and displays a welcome modal with options for the user.
-$(document).ready(function () {
+function showModal() {
   $("#spoon-side").hide();
   $("#edamam-side").hide();
   $("#popup").show();
-});
+}
 
-// Hides the modal and shows the user selected input and search elements.
-$("#spoonOptionBtn").on("click", function () {
+function showSpoon() {
   $("#spoon-side").show();
+  $("#edamam-side").hide();
   $("#popup").hide();
-});
+}
 
-// Hides the modal and shows the user selected input and search elements.
-$("#edamamOptionBtn").on("click", function () {
+function showEdamam() {
+  $("#spoon-side").hide();
   $("#edamam-side").show();
   $("#popup").hide();
-});
+}
+
+// Links function that shows/hides HTML elements to page load.
+$(document).ready(showModal);
+// Links functions that show/hide HTML elements to respective click events.
+$("#spoonOptionBtn").on("click", showSpoon);
+$("#edamamOptionBtn").on("click", showEdamam);
+$("#edamamBackBtn").on("click", showSpoon);
+$("#spoonBackBtn").on("click", showEdamam);
 
 // Removes all recipes from Spoon JSON data that have more than any missing ingredients.
 function spoonFilterRecipes(data) {
@@ -163,7 +170,7 @@ function edamamFetch() {
 }
 
 // Attaches a click event to Spoon Search Button.
-$("#spoonRecipeSearchBtn").on("click", function () {
+$("#spoonSearchBtn").on("click", function () {
   // Fills the empty ingredient arrays with the users input.
   spoonIngredientArray = $("#spoonIngredientInput").val().split(", ");
   // Calls the Fetch function.
@@ -171,21 +178,9 @@ $("#spoonRecipeSearchBtn").on("click", function () {
 });
 
 // Attaches a click event to Edamam Search Button.
-$("#edamamRecipeSearchBtn").on("click", function () {
+$("#edamamSearchBtn").on("click", function () {
   // Fills the empty ingredient arrays with the users input.
   edamamIngredientArray = $("#edamamIngredientInput").val().split(", ");
   // Calls the Fetch function.
   edamamFetch();
-});
-
-// To make the "pantry icon" a button so the user can go to explore the spoon side
-$("#spoonBackBtn").on("click", function () {
-  $("#spoon-side").hide();
-  $("#edamam-side").show();
-});
-
-// To make the "bulb icon" a button so the user can go to explore the edamam side
-$("#edamamBackBtn").on("click", function () {
-  $("#spoon-side").show();
-  $("#edamam-side").hide();
 });
