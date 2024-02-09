@@ -95,6 +95,8 @@ function spoonFetch() {
         );
       }
       console.log(spoonFilteredRecipes);
+      // Removes all content from spoonRecipes so it can be replaced.
+      $("#spoonRecipes").empty();
       spoonFilteredRecipes.forEach((recipe) => {
         spoonCreateCard(recipe);
       });
@@ -163,6 +165,8 @@ function edamamFetch() {
         );
       }
       console.log(edamamFilteredRecipes);
+      // Removes all content from edamamRecipes so it can be replaced.
+      $("#edamamRecipes").empty();
       edamamFilteredRecipes.forEach((recipe) => {
         edamamCreateCard(recipe);
       });
