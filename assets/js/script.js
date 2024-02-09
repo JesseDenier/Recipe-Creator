@@ -138,6 +138,30 @@ function edamamFetch() {
     });
 }
 
+const spoonOptionBtn = document.getElementById("spoonOptionBtn");
+const edamamOptionBtn = document.getElementById("edamamOptionBtn");
+
+// Event listeners for selection buttons in the pop-up window
+spoonOptionBtn.addEventListener("click", function () {
+  document.querySelector(".spoon-side").style.display = "block";
+  document.querySelector(".edamam-side").style.display = "none";
+  $("#popup").hide(); // This will make the pop-up dissapear after selection
+});
+
+edamamOptionBtn.addEventListener("click", function () {
+  document.querySelector(".spoon-side").style.display = "none";
+  document.querySelector(".edamam-side").style.display = "block";
+  $("#popup").hide(); // This will make the pop-up dissapear after selection
+});
+
+// Creates an interactive welcome message on page load and offers the user 2 options for the use of the website
+$(document).ready(function () {
+  $("#popup").show();
+  $("#closePopup").click(function () {
+    $("#popup").hide();
+  });
+});
+
 // Attaches a click event to Spoon Search Button.
 spoonSearchBtn.addEventListener("click", function () {
   // Fills the empty ingredient arrays with the users input.
@@ -154,10 +178,3 @@ edamamSearchBtn.addEventListener("click", function () {
   edamamFetch();
 });
 
-// Creates an interactive welcome message on page load.
-$(document).ready(function () {
-  $("#popup").show();
-  $("#closePopup").click(function () {
-    $("#popup").hide();
-  });
-});
