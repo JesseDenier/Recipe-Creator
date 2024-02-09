@@ -7,24 +7,31 @@ const spoonacularAPIKey = "b1e8d5af6d6f4efaaa60746bf1c9cd8c";
 const edamamAPIKey = "bcbb167d1766a0e612f1bb055f2ac680";
 const edamamAPIId = "dc99804d";
 
-// Hides all input and search elements until the user selects one, and displays a welcome modal with options for the user.
-$(document).ready(function () {
+function showModal() {
   $("#spoon-side").hide();
   $("#edamam-side").hide();
   $("#popup").show();
-});
+}
 
-// Hides the modal and shows the user selected input and search elements.
-$("#spoonOptionBtn").on("click", function () {
+function showSpoon() {
   $("#spoon-side").show();
+  $("#edamam-side").hide();
   $("#popup").hide();
-});
+}
 
-// Hides the modal and shows the user selected input and search elements.
-$("#edamamOptionBtn").on("click", function () {
+function showEdamam() {
+  $("#spoon-side").hide();
   $("#edamam-side").show();
   $("#popup").hide();
-});
+}
+
+// Links function that shows/hides HTML elements to page load.
+$(document).ready(showModal);
+// Links functions that show/hide HTML elements to respective click events.
+$("#spoonOptionBtn").on("click", showSpoon);
+$("#edamamOptionBtn").on("click", showEdamam);
+$("#edamamBackBtn").on("click", showSpoon);
+$("#spoonBackBtn").on("click", showEdamam);
 
 // Removes all recipes from Spoon JSON data that have more than any missing ingredients.
 function spoonFilterRecipes(data) {
@@ -36,42 +43,26 @@ function spoonFilterRecipes(data) {
 // Creates recipe cards based on spoonFetch data.
 function spoonCreateCard(recipe) {
   // Create a div element for the recipe card.
-  const card = document.createElement("div");
-  card.classList.add(
-    "recipe-card",
-    "bg-red-200",
-    "rounded-xl",
-    "p-8",
-    "mt-6",
-    "mb-12",
-    "ml-12",
-    "mr-12",
-    "text-black"
+  const card = $("<div>").addClass(
+    "recipe-card bg-red-200 rounded-xl p-8 mt-6 mb-12 ml-12 mr-12 text-black"
   );
   // Create an h2 element with the recipe name.
-  const recipeName = document.createElement("h2");
-  recipeName.textContent = "Recipe: " + recipe.title;
-  recipeName.classList.add("text-2xl", "text-center", "underline");
-
+  const recipeName = $("<h2>")
+    .text("Recipe: " + recipe.title)
+    .addClass("text-2xl text-center underline");
   // Creates an h3 element with titling the ingredient list to go in recipe card.
-  const ingredientListTitle = document.createElement("h3");
-  ingredientListTitle.textContent = "Ingredients";
-  ingredientListTitle.classList.add("text-lg", "text-pink-500", "underline");
-
+  const ingredientListTitle = $("<h3>")
+    .text("Ingredients")
+    .addClass("text-lg text-pink-500 underline");
   // Create a ul element for the ingredients list.
-  const ingredientsList = document.createElement("ul");
-  ingredientsList.classList.add("list-disc");
-
+  const ingredientList = $("<ul>").addClass("list-disc");
   // Iterate over the ingredients and create li elements for each.
   recipe.usedIngredients.forEach((ingredient) => {
-    const ingredientItem = document.createElement("li");
-    ingredientItem.textContent = ingredient.name;
-    ingredientsList.appendChild(ingredientItem);
+    const ingredientItem = $("<li>").text(ingredient.name);
+    ingredientList.append(ingredientItem);
   });
   // Appends the recipe name and ingredients list to the card.
-  card.appendChild(recipeName);
-  card.appendChild(ingredientListTitle);
-  card.appendChild(ingredientsList);
+  card.append(recipeName, ingredientListTitle, ingredientList);
   // Append the card to the HTML.
   $("#spoonRecipes").append(card);
 }
@@ -113,48 +104,33 @@ function spoonFetch() {
 // Creates recipe cards based on edamamFetch data.
 function edamamCreateCard(recipe) {
   // Create a linking anchor element.
-  const link = document.createElement("a");
-  link.href = recipe.recipe.url;
-  link.target = "_blank";
+  const link = $("<a>").attr({
+    href: recipe.recipe.url,
+    target: "_blank",
+  });
   // Creates a div element for the recipe card to go in the anchor link.
-  const card = document.createElement("div");
-  card.classList.add(
-    "recipe-card",
-    "bg-red-200",
-    "rounded-xl",
-    "p-8",
-    "mt-6",
-    "mb-12",
-    "ml-12",
-    "mr-12",
-    "text-black"
+  const card = $("<div>").addClass(
+    "recipe-card bg-red-200 rounded-xl p-8 mt-6 mb-12 ml-12 mr-12 text-black"
   );
   // Creates an h2 element with the recipe name to go in recipe card.
-  const recipeName = document.createElement("h2");
-  recipeName.textContent = "Recipe: " + recipe.recipe.label;
-  recipeName.classList.add("text-2xl", "text-center", "underline");
-
+  const recipeName = $("<h2>")
+    .text("Recipe: " + recipe.recipe.label)
+    .addClass("text-2xl text-center underline");
   // Creates an h3 element with titling the ingredient list to go in recipe card.
-  const ingredientListTitle = document.createElement("h3");
-  ingredientListTitle.textContent = "Ingredients";
-  ingredientListTitle.classList.add("text-lg", "text-pink-500", "underline");
-
+  const ingredientListTitle = $("<h3>")
+    .text("Ingredients")
+    .addClass("text-lg text-pink-500 underline");
   // Creates a ul element for the ingredients list to get in recipe card.
-  const ingredientsList = document.createElement("ul");
-  ingredientsList.classList.add("list-disc");
-
-  // Iterates over the ingredients and create li elements for each to get in ingredientsList.
+  const ingredientList = $("<ul>").addClass("list-disc");
+  // Iterates over the ingredients and create li elements for each to get in ingredientList.
   recipe.recipe.ingredients.forEach((ingredient) => {
-    const ingredientItem = document.createElement("li");
-    ingredientItem.textContent = ingredient.food;
-    ingredientsList.appendChild(ingredientItem);
+    const ingredientItem = $("<li>").text(ingredient.food);
+    ingredientList.append(ingredientItem);
   });
   // Append the recipe name and ingredients list to the card.
-  card.appendChild(recipeName);
-  card.appendChild(ingredientListTitle);
-  card.appendChild(ingredientsList);
+  card.append(recipeName, ingredientListTitle, ingredientList);
   // Append the card into the anchor element.
-  link.appendChild(card);
+  link.append(card);
   // Append the anchor element to the HTML.
   $("#edamamRecipes").append(link);
 }
@@ -194,7 +170,7 @@ function edamamFetch() {
 }
 
 // Attaches a click event to Spoon Search Button.
-$("#spoonRecipeSearchBtn").on("click", function () {
+$("#spoonSearchBtn").on("click", function () {
   // Fills the empty ingredient arrays with the users input.
   spoonIngredientArray = $("#spoonIngredientInput").val().split(", ");
   // Calls the Fetch function.
@@ -202,21 +178,9 @@ $("#spoonRecipeSearchBtn").on("click", function () {
 });
 
 // Attaches a click event to Edamam Search Button.
-$("#edamamRecipeSearchBtn").on("click", function () {
+$("#edamamSearchBtn").on("click", function () {
   // Fills the empty ingredient arrays with the users input.
   edamamIngredientArray = $("#edamamIngredientInput").val().split(", ");
   // Calls the Fetch function.
   edamamFetch();
-});
-
-// To make the "pantry icon" a button so the user can go to explore the spoon side
-$("#spoonBackBtn").on("click", function () {
-  $("#spoon-side").hide();
-  $("#edamam-side").show();
-});
-
- // To make the "bulb icon" a button so the user can go to explore the edamam side
-$("#edamamBackBtn").on("click", function () {
-  $("#spoon-side").show();
-  $("#edamam-side").hide();
 });
