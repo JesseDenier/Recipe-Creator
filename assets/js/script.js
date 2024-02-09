@@ -13,6 +13,25 @@ const spoonacularAPIKey = "b1e8d5af6d6f4efaaa60746bf1c9cd8c";
 const edamamAPIKey = "bcbb167d1766a0e612f1bb055f2ac680";
 const edamamAPIId = "dc99804d";
 
+// Hides all input and search elements until the user selects one, and displays a welcome modal with options for the user.
+$(document).ready(function () {
+  $("#spoon-side").hide();
+  $("#edamam-side").hide();
+  $("#popup").show();
+});
+
+// Hides the modal and shows the user selected input and search elements.
+$("#spoonOptionBtn").on("click", function () {
+  $("#spoon-side").show();
+  $("#popup").hide();
+});
+
+// Hides the modal and shows the user selected input and search elements.
+$("#edamamOptionBtn").on("click", function () {
+  $("#edamam-side").show();
+  $("#popup").hide();
+});
+
 // Removes all recipes from Spoon JSON data that have more than any missing ingredients.
 function spoonFilterRecipes(data) {
   return data.filter(function (recipe) {
@@ -24,7 +43,17 @@ function spoonFilterRecipes(data) {
 function spoonCreateCard(recipe) {
   // Create a div element for the recipe card.
   const card = document.createElement("div");
-  card.classList.add("recipe-card", "bg-red-200", "rounded-xl", "p-8", "mt-6","mb-12", "ml-12", "mr-12", "text-black");
+  card.classList.add(
+    "recipe-card",
+    "bg-red-200",
+    "rounded-xl",
+    "p-8",
+    "mt-6",
+    "mb-12",
+    "ml-12",
+    "mr-12",
+    "text-black"
+  );
   // Create an h2 element with the recipe name.
   const recipeName = document.createElement("h2");
   recipeName.textContent = "Recipe: " + recipe.title;
@@ -95,7 +124,17 @@ function edamamCreateCard(recipe) {
   link.target = "_blank";
   // Creates a div element for the recipe card to go in the anchor link.
   const card = document.createElement("div");
-  card.classList.add("recipe-card", "bg-red-200", "rounded-xl", "p-8", "mt-6","mb-12", "ml-12", "mr-12", "text-black");
+  card.classList.add(
+    "recipe-card",
+    "bg-red-200",
+    "rounded-xl",
+    "p-8",
+    "mt-6",
+    "mb-12",
+    "ml-12",
+    "mr-12",
+    "text-black"
+  );
   // Creates an h2 element with the recipe name to go in recipe card.
   const recipeName = document.createElement("h2");
   recipeName.textContent = "Recipe: " + recipe.recipe.label;
@@ -159,30 +198,6 @@ function edamamFetch() {
       });
     });
 }
-
-const spoonOptionBtn = document.getElementById("spoonOptionBtn");
-const edamamOptionBtn = document.getElementById("edamamOptionBtn");
-
-// Event listeners for selection buttons in the pop-up window
-spoonOptionBtn.addEventListener("click", function () {
-  document.querySelector("#spoon-side").style.display = "block";
-  document.querySelector("#edamam-side").style.display = "none";
-  $("#popup").hide(); // This will make the pop-up dissapear after selection
-});
-
-edamamOptionBtn.addEventListener("click", function () {
-  document.querySelector("#spoon-side").style.display = "none";
-  document.querySelector("#edamam-side").style.display = "block";
-  $("#popup").hide(); // This will make the pop-up dissapear after selection
-});
-
-// Creates an interactive welcome message on page load and offers the user 2 options for the use of the website
-$(document).ready(function () {
-  $("#popup").show();
-  $("#closePopup").click(function () {
-    $("#popup").hide();
-  });
-});
 
 // Attaches a click event to Spoon Search Button.
 spoonSearchBtn.addEventListener("click", function () {
