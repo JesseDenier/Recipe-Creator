@@ -69,6 +69,11 @@ function spoonFetch() {
     // Calls "spoonFilterRecipes," then console logs the result, and then calls "spoonCreateCard" for each recipe.
     .then(function (data) {
       let spoonFilteredRecipes = spoonFilterRecipes(data).slice(0, 6);
+      if (spoonFilteredRecipes.length === 0) {
+        alert(
+          "No recipes found. Please make sure each ingredient is spelled correctly and seperated by a comma and space."
+        );
+      }
       console.log(spoonFilteredRecipes);
       spoonFilteredRecipes.forEach((recipe) => {
         spoonCreateCard(recipe);
@@ -131,6 +136,11 @@ function edamamFetch() {
     //Console logs the result, and then calls "edamamCreateCard" for each recipe.
     .then(function (data) {
       let edamamFilteredRecipes = data.hits.slice(0, 6);
+      if (edamamFilteredRecipes.length === 0) {
+        alert(
+          "No recipes found. Please make sure each ingredient is spelled correctly and seperated by a comma and space."
+        );
+      }
       console.log(edamamFilteredRecipes);
       edamamFilteredRecipes.forEach((recipe) => {
         edamamCreateCard(recipe);
@@ -177,4 +187,3 @@ edamamSearchBtn.addEventListener("click", function () {
   // Calls the Fetch function.
   edamamFetch();
 });
-
