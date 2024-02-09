@@ -27,7 +27,10 @@ function spoonCreateCard(recipe) {
   card.classList.add("recipe-card");
   // Create an h2 element with the recipe name.
   const recipeName = document.createElement("h2");
-  recipeName.textContent = recipe.title;
+  recipeName.textContent = "Recipe: " + recipe.title;
+  // Creates an h3 element with titling the ingredient list to go in recipe card.
+  const ingredientListTitle = document.createElement("h3");
+  ingredientListTitle.textContent = "Ingredients";
   // Create a ul element for the ingredients list.
   const ingredientsList = document.createElement("ul");
   // Iterate over the ingredients and create li elements for each.
@@ -38,10 +41,10 @@ function spoonCreateCard(recipe) {
   });
   // Appends the recipe name and ingredients list to the card.
   card.appendChild(recipeName);
+  card.appendChild(ingredientListTitle);
   card.appendChild(ingredientsList);
   // Append the card to the HTML.
-  // TODO: Create a space in the HTML for these cards to go and then change "body" to that space.
-  document.body.appendChild(card);
+  $("#spoonRecipes").append(card);
 }
 
 // Takes the value created with the spoonSearchBtn click event and fetches the correct data.
@@ -75,15 +78,22 @@ function spoonFetch() {
 
 // Creates recipe cards based on edamamFetch data.
 function edamamCreateCard(recipe) {
-  // Create a div element for the recipe card.
+  // Create a linking anchor element.
+  const link = document.createElement("a");
+  link.href = recipe.recipe.url;
+  link.target = "_blank";
+  // Creates a div element for the recipe card to go in the anchor link.
   const card = document.createElement("div");
   card.classList.add("recipe-card");
-  // Create an h2 element with the recipe name.
+  // Creates an h2 element with the recipe name to go in recipe card.
   const recipeName = document.createElement("h2");
-  recipeName.textContent = recipe.recipe.label;
-  // Create a ul element for the ingredients list.
+  recipeName.textContent = "Recipe: " + recipe.recipe.label;
+  // Creates an h3 element with titling the ingredient list to go in recipe card.
+  const ingredientListTitle = document.createElement("h3");
+  ingredientListTitle.textContent = "Ingredients";
+  // Creates a ul element for the ingredients list to get in recipe card.
   const ingredientsList = document.createElement("ul");
-  // Iterate over the ingredients and create li elements for each.
+  // Iterates over the ingredients and create li elements for each to get in ingredientsList.
   recipe.recipe.ingredients.forEach((ingredient) => {
     const ingredientItem = document.createElement("li");
     ingredientItem.textContent = ingredient.food;
@@ -91,10 +101,12 @@ function edamamCreateCard(recipe) {
   });
   // Append the recipe name and ingredients list to the card.
   card.appendChild(recipeName);
+  card.appendChild(ingredientListTitle);
   card.appendChild(ingredientsList);
-  // Append the card to the HTML.
-  // TODO: Create a space in the HTML for these cards to go and then change "body" to that space.
-  document.body.appendChild(card);
+  // Append the card into the anchor element.
+  link.appendChild(card);
+  // Append the anchor element to the HTML.
+  $("#edamamRecipes").append(link);
 }
 
 // Takes the value created with the edamamSearchBtn click event and fetches the correct data.
