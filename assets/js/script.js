@@ -208,3 +208,15 @@ $("#edamamRecipeSearchBtn").on("click", function () {
   // Calls the Fetch function.
   edamamFetch();
 });
+
+// To make the "pantry icon" a button so the user can go to explore the spoon side
+$("#spoonBackBtn").on("click", function () {
+  $("#spoon-side").hide();
+  $("#edamam-side").show();
+});
+
+ // To make the "bulb icon" a button so the user can go to explore the edamam side
+$("#edamamBackBtn").on("click", function () {
+  $("#spoon-side").show();
+  $("#edamam-side").hide();
+});
