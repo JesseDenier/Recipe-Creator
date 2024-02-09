@@ -4,67 +4,58 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <!-- Links Foundation CSS. -->
-    <!-- TODO: Relink this to a modern one but keep it working. -->
-    <link
-      rel="stylesheet"
-      href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css"
-    />
-    <title>Recipe Creator</title>
+    <!-- Links Tailwind CSS. -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <!-- Links custom CSS. -->
     <link rel="stylesheet" href="assets/css/style.css" />
+    <title>Recipe Creator</title>
   </head>
 
   <body class="color-secondary">
-
     <!-- Header-->
-    <header class="color-primary text-center top-bar">
-      <h1 class="large-text text-color-pink">Recipe Creator</h1>
+    <header class="text-center text-3xl p-5 color-primary ">
+      <h1 class="text-color-pink">Recipe Creator</h1>
     </header>
 
     <!-- Main -->
-    <main class="row">
+    <main>
 
-
-      <!-- Spoon side -->
-      <article class=spoon-side medium-6 columns text-center">
-        <p>If you don't want to go to the grocery store use this side!</p>
-        <img class="column-image" src="assets/imgs/Pantry.png" />
-        <p class="text-center medium-text text-color-green">
+      <!-- Spoon -->
+      <article class="spoon-side text-center">
+        <p>Great Choice!</p>
+        <img class="h-36" src="assets/imgs/Pantry.png" />
+        <p class="text-color-green">
           Enter every ingredient you have available below.<br />*Seperate
           each ingredient with a comma and space.
         </p>
         <input
           placeholder="Ingredients in Pantry"
-          class="text-center cell panel callout primary"
           id="spoonIngredientInput"
         />
         <button
           id="spoonRecipeSearchBtn"
-          class="color-pink button large expanded"
+          class="button color-pink"
         >
           Search
         </button>
         <div id="spoonRecipes"></div>
       </article>
                               
-      <!-- Edamam Side -->
-      <article class="edamam-side medium-6 columns text-center">
-        <p>If you're feeling adventurous use this side!</p>
-
-        <img class="column-image" src="assets/imgs/Idea.png" />
-        <p class="text-center medium-text text-color-green">
+      <!-- Edamam -->
+      <article class="edamam-side text-center">
+        <p>Great Choice!</p>
+        <img class="h-36" src="assets/imgs/Idea.png" />
+        <p class="text-color-green">
           Enter any ingredients you would like to use below.<br />*Seperate
           each ingredient with a comma and space.
         </p>
         <input
           placeholder="Ingredient to Build From"
-          class="text-center cell panel callout primary"
           id="edamamIngredientInput"
         />
         <button
           id="edamamRecipeSearchBtn"
-          class="color-pink button large expanded"
+          class="button color-pink"
         >
           Search
         </button>
@@ -75,29 +66,26 @@
       <div id="popup" class="popup">
         <h2>Welcome to Recipe Creator!</h2>
         <div>
-          <p> If you don't want to go to the grocery store and use what you have available at home... 
+          <p> Click below if you'd like to get a little adventurous and save yourself a trip to the grocery store!
           </p> 
           <button id="spoonOptionBtn" class="button"> CLICK HERE! </button>
           <img class="welcome-image" src="assets/imgs/chef.png" />
-          <p> If you're feeling adventurous and want to try somethin new...
+          <p> Click below if you like to follow recipes and don't mind a quick trip to get just the right ingredients!
           </p>
-          <button id="edamamOptionBtn" class="button"> CLICK Here!</button>
+          <button id="edamamOptionBtn" class="button"> CLICK HERE!</button>
         </div>
       </div>
  
 
     <!-- Footer -->
-  <footer class="row color-primary text-center">
-    <h2 class="medium-10"></h2>
+  <footer class="fixed bottom-0 p-5 w-screen text-center color-primary">
+    <h2>
     Created by Jesse Denier, Jenny Munar, Eddie Montoya, Claire Shipley, and
-    Sadie Thongsavanh.
+    Sadie Thongsavanh.</h2>
   </footer>
 
     <!--Links Jquery JS. -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <!-- Links Foundation JS. -->
-    <!-- TODO: Relink this to a modern one but keep it working. -->
-    <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
     <!-- Links custom JS. -->
     <script src="assets/js/script.js"></script>
   </body>

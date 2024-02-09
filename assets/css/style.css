@@ -2,12 +2,6 @@
   font-family: "Times New Roman", Times, serif;
 }
 
-header {
-  position: fixed;
-  width: 100%;
-  height: 98px;
-}
-
 p {
   margin: 5px;
   padding: 5px;
@@ -62,7 +56,7 @@ p {
 .popup {
   width: 100%;
   height: 80%;
-  display: none; 
+  display: none;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -85,7 +79,7 @@ p {
   color: white;
 }
 
-.popup-content{
+.popup-content {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -95,23 +89,23 @@ p {
   text-align: center;
 }
 
-.popup p{
+.popup p {
   font-size: 20px;
 }
 .button {
   background-color: rgb(243, 150, 166);
   color: white;
   align-items: center;
-  padding: 15px 30px; 
+  padding: 15px 30px;
   font-size: 18px;
-  }
+}
 
 .popup button {
   margin-top: 20px;
 }
 
 .welcome-image {
-  display:flex;
+  display: flex;
   justify-content: center;
   margin-left: 50%;
   size: 20px;
@@ -119,20 +113,6 @@ p {
 }
 
 .button:hover {
-  background-color: lightpink; 
-  color: black
-
+  background-color: lightpink;
+  color: black;
 }
-
-footer {
-  justify-content: center;
-  align-items: center;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  width: 100% !important;
-  position: absolute;
-  height: 60px;
-  padding: 10px;
-}
-
