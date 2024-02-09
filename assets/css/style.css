@@ -88,4 +88,11 @@ p {
   color: black;
 }
 
+textarea {
+  font-size: 35px !important;
+  border: 2px solid rgb(255, 182, 193);  
+}
 
+h1 {
+  font-size: 40px !important;
+}
