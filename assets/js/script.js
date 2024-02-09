@@ -143,14 +143,14 @@ const edamamOptionBtn = document.getElementById("edamamOptionBtn");
 
 // Event listeners for selection buttons in the pop-up window
 spoonOptionBtn.addEventListener("click", function () {
-  document.querySelector(".spoon-side").style.display = "block";
-  document.querySelector(".edamam-side").style.display = "none";
+  document.querySelector("#spoon-side").style.display = "block";
+  document.querySelector("#edamam-side").style.display = "none";
   $("#popup").hide(); // This will make the pop-up dissapear after selection
 });
 
 edamamOptionBtn.addEventListener("click", function () {
-  document.querySelector(".spoon-side").style.display = "none";
-  document.querySelector(".edamam-side").style.display = "block";
+  document.querySelector("#spoon-side").style.display = "none";
+  document.querySelector("#edamam-side").style.display = "block";
   $("#popup").hide(); // This will make the pop-up dissapear after selection
 });
 
