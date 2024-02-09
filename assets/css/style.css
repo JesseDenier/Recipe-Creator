@@ -87,3 +87,9 @@ p {
   background-color: lightpink;
   color: black;
 }
+
+#spoon-side,
+#edamam-side {
+  display: none;
+}
+
