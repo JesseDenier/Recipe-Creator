@@ -25,8 +25,8 @@
     <!-- Main -->
     <main class="row">
 
-      <!-- Spoon Column -->
-      <article class="medium-6 columns text-center">
+      <!-- Spoon side -->
+      <article class=spoon-side medium-6 columns text-center">
         <p>If you don't want to go to the grocery store use this side!</p>
         <img class="column-image" src="assets/imgs/Pantry.png" />
         <p class="text-center medium-text text-color-green">
@@ -46,8 +46,8 @@
         </button>
       </article>
 
-      <!-- Edamam Column -->
-      <article class="medium-6 columns text-center">
+      <!-- Edamam Side -->
+      <article class="edamam-side medium-6 columns text-center">
         <p>If you're feeling adventurous use this side!</p>
         <img class="column-image" src="assets/imgs/Idea.png" />
         <p class="text-center medium-text text-color-green">
@@ -69,18 +69,25 @@
 
       <!--pop up window -->
       <div id="popup" class="popup">
-        <h2>WELCOME to Recipe Creator!</h2>
-        <p>Discover Flavor, Find Ease: Your Recipe Quest Starts Here!</p>
-        <button id="closePopup">Close</button>
+        <h2>Welcome to Recipe Creator!</h2>
+        <div>
+          <p> If you don't want to go to the grocery store and use what you have available at home... 
+          </p> 
+          <button id="spoonOptionBtn" class="button"> CLICK HERE! </button>
+          <img class="welcome-image" src="assets/imgs/chef.png" />
+          <p> If you're feeling adventurous and want to try somethin new...
+          </p>
+          <button id="edamamOptionBtn" class="button"> CLICK Here!</button>
+        </div>
       </div>
  
 
     <!-- Footer -->
-    <footer class="row color-primary text-center">
-      <h2 class="medium-6"></h2>
-      Created by Jesse Denier, Jenny Munar, Eddie Montoya, Claire Shipley, and
-      Sadie Thongsavanh.
-    </footer>
+  <footer class="row color-primary text-center">
+    <h2 class="medium-10"></h2>
+    Created by Jesse Denier, Jenny Munar, Eddie Montoya, Claire Shipley, and
+    Sadie Thongsavanh.
+  </footer>
 
     <!--Links Jquery JS. -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
