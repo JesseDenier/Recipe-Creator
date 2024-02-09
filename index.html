@@ -28,16 +28,15 @@
           Enter every ingredient you have available below.<br />*Seperate
           each ingredient with a comma and space.
         </p>
-        <input
-          placeholder="Ingredients in Pantry"
-          id="spoonIngredientInput"
-        />
+        <div class="flex flex-col items-center">
+        <textarea placeholder="Ingredients in Pantry" id="spoonIngredientInput" class="text-center w-1/2"></textarea>
         <button
           id="spoonRecipeSearchBtn"
-          class="button color-pink"
+          class="mt-3 button color-pink"
         >
           Search
         </button>
+        </div>
         <div id="spoonRecipes"></div>
       </article>
                               
@@ -49,16 +48,15 @@
           Enter any ingredients you would like to use below.<br />*Seperate
           each ingredient with a comma and space.
         </p>
-        <input
-          placeholder="Ingredient to Build From"
-          id="edamamIngredientInput"
-        />
+                <div class="flex flex-col items-center">
+        <textarea placeholder="Ingredient to Build From" id="edamamIngredientInput" class="text-center w-1/2"></textarea>
         <button
           id="edamamRecipeSearchBtn"
-          class="button color-pink"
+          class="mt-3 button color-pink"
         >
           Search
         </button>
+        </div>
         <div id="edamamRecipes"></div>
       </article>
 
