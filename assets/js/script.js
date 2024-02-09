@@ -210,33 +210,13 @@ $("#edamamRecipeSearchBtn").on("click", function () {
 });
 
 // To make the "pantry icon" a button so the user can go to explore the spoon side
-document.getElementById("pantryBtn").addEventListener("click", function () {
-  const spoonSide = document.getElementById("spoon-side");
-  const edamamSide = document.getElementById("edamam-side");
-
-  if (spoonSide.style.display !== "none") {
-    spoonSide.style.display = "none";
-    edamamSide.style.display = "block";
-  } 
-
-  else if (edamamSide.display !== "none") {
-    edamamSide.display = "none";
-    spoonSide.style.display = "block";
-  }
- });
+$("#spoonBackBtn").on("click", function () {
+  $("#spoon-side").hide();
+  $("#edamam-side").show();
+});
 
  // To make the "bulb icon" a button so the user can go to explore the edamam side
-document.getElementById("ideaBtn").addEventListener("click", function () {
-  const spoonSide = document.getElementById("spoon-side");
-  const edamamSide = document.getElementById("edamam-side");
-
-  if (edamamSide.style.display !== "none") {
-    edamamSide.style.display = "none";
-    spoonSide.style.display = "block";
-  } 
-
-  else if (spoonSide.style.display !== "none") {
-    spoonSide.style.display = "none";
-    edamamSide.style.display = "block";
-  }
+$("#edamamBackBtn").on("click", function () {
+  $("#spoon-side").show();
+  $("#edamam-side").hide();
 });
