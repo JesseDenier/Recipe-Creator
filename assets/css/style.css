@@ -32,27 +32,6 @@ p {
   margin: 10px;
 }
 
-.recipe-card {
-  border-radius: 25px;
-  padding: 20px;
-  background-color: #e4bcce;
-}
-
-.recipe-card h2 {
-  color: #06442f;
-  font-size: 15px;
-  margin-bottom: 5px;
-}
-
-.recipe-card ul {
-  list-style-type: none;
-  padding: 5px;
-}
-
-.recipe-card li {
-  margin-bottom: 5px;
-}
-
 .popup {
   width: 100%;
   height: 80%;

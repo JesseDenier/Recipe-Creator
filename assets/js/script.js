@@ -24,15 +24,21 @@ function spoonFilterRecipes(data) {
 function spoonCreateCard(recipe) {
   // Create a div element for the recipe card.
   const card = document.createElement("div");
-  card.classList.add("recipe-card");
+  card.classList.add("recipe-card", "bg-red-200", "rounded-xl", "p-8", "mt-6","mb-12", "ml-12", "mr-12", "text-black");
   // Create an h2 element with the recipe name.
   const recipeName = document.createElement("h2");
   recipeName.textContent = "Recipe: " + recipe.title;
+  recipeName.classList.add("text-2xl", "text-center", "underline");
+
   // Creates an h3 element with titling the ingredient list to go in recipe card.
   const ingredientListTitle = document.createElement("h3");
   ingredientListTitle.textContent = "Ingredients";
+  ingredientListTitle.classList.add("text-lg", "text-pink-500", "underline");
+
   // Create a ul element for the ingredients list.
   const ingredientsList = document.createElement("ul");
+  ingredientsList.classList.add("list-disc");
+
   // Iterate over the ingredients and create li elements for each.
   recipe.usedIngredients.forEach((ingredient) => {
     const ingredientItem = document.createElement("li");
@@ -89,15 +95,21 @@ function edamamCreateCard(recipe) {
   link.target = "_blank";
   // Creates a div element for the recipe card to go in the anchor link.
   const card = document.createElement("div");
-  card.classList.add("recipe-card");
+  card.classList.add("recipe-card", "bg-red-200", "rounded-xl", "p-8", "mt-6","mb-12", "ml-12", "mr-12", "text-black");
   // Creates an h2 element with the recipe name to go in recipe card.
   const recipeName = document.createElement("h2");
   recipeName.textContent = "Recipe: " + recipe.recipe.label;
+  recipeName.classList.add("text-2xl", "text-center", "underline");
+
   // Creates an h3 element with titling the ingredient list to go in recipe card.
   const ingredientListTitle = document.createElement("h3");
   ingredientListTitle.textContent = "Ingredients";
+  ingredientListTitle.classList.add("text-lg", "text-pink-500", "underline");
+
   // Creates a ul element for the ingredients list to get in recipe card.
   const ingredientsList = document.createElement("ul");
+  ingredientsList.classList.add("list-disc");
+
   // Iterates over the ingredients and create li elements for each to get in ingredientsList.
   recipe.recipe.ingredients.forEach((ingredient) => {
     const ingredientItem = document.createElement("li");
@@ -153,14 +165,14 @@ const edamamOptionBtn = document.getElementById("edamamOptionBtn");
 
 // Event listeners for selection buttons in the pop-up window
 spoonOptionBtn.addEventListener("click", function () {
-  document.querySelector(".spoon-side").style.display = "block";
-  document.querySelector(".edamam-side").style.display = "none";
+  document.querySelector("#spoon-side").style.display = "block";
+  document.querySelector("#edamam-side").style.display = "none";
   $("#popup").hide(); // This will make the pop-up dissapear after selection
 });
 
 edamamOptionBtn.addEventListener("click", function () {
-  document.querySelector(".spoon-side").style.display = "none";
-  document.querySelector(".edamam-side").style.display = "block";
+  document.querySelector("#spoon-side").style.display = "none";
+  document.querySelector("#edamam-side").style.display = "block";
   $("#popup").hide(); // This will make the pop-up dissapear after selection
 });
 
