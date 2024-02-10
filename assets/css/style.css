@@ -89,10 +89,7 @@ p {
 }
 
 textarea {
-  font-size: 35px !important;
+  /* font-size: 35px; */
   border: 2px solid rgb(255, 182, 193);  
 }
 
-h1 {
-  font-size: 40px !important;
-}
