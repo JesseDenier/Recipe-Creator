@@ -1,36 +1,35 @@
+:root {
+  --Primary_Color: #c1a7b3;
+  --Secondary_Color: #8acfa97d;
+  --Primary_Color_Dark: #a55265;
+  --Secondary_Color_Dark: #335449;
+}
+
 * {
   font-family: "Times New Roman", Times, serif;
 }
 
-p {
-  margin: 5px;
-  padding: 5px;
-}
-
 .color-primary {
-  background-color: #c1a7b3;
+  background-color: var(--Primary_Color);
 }
 
 .color-secondary {
-  background-color: #8acfa97d;
+  background-color: var(--Secondary_Color);
 }
 
-.color-pink {
-  background-color: #a55265;
+.color-primary-dark {
+  background-color: var(--Primary_Color_Dark);
 }
 
-.text-color-pink {
-  color: #a55265;
+.text-color-primary-dark {
+  color: var(--Primary_Color_Dark);
 }
 
-.text-color-green {
-  color: #335449;
+.text-color-secondary-dark {
+  color: var(--Secondary_Color_Dark);
 }
 
-.column-image {
-  max-height: 75px;
-  margin: 10px;
-}
+/* TODO: Everything below this line needs to be adjusted to use Tailwind Classes where possible. */
 
 .popup {
   width: 100%;
@@ -40,9 +39,9 @@ p {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #e4bcce;
+  background-color: var(--Primary_Color);
   padding: 80px;
-  border: 30px solid #a55265;
+  border: 30px solid var(--Primary_Color_Dark);
   z-index: 9999;
   align-items: center;
   justify-content: center;
@@ -50,42 +49,15 @@ p {
   margin-top: 20px;
 }
 
-.pop-title {
-  font-size: 90px;
-  margin-bottom: 20px;
-  margin-left: 50%;
-  text-align: center;
-  color: white;
-}
-
-.popup-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-size: medium;
-  text-align: center;
-}
-
-.popup p {
-  font-size: 20px;
-}
 .button {
-  background-color: rgb(243, 150, 166);
+  background-color: var(--Primary_Color_Dark);
   color: white;
   align-items: center;
   padding: 15px 30px;
   font-size: 18px;
 }
 
-.popup button {
-  margin-top: 20px;
-}
-
 .button:hover {
-  background-color: lightpink;
+  background-color: var(--Primary_Color);
   color: black;
 }
-
-
