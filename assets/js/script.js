@@ -2,6 +2,8 @@
 let spoonIngredientArray = [];
 let edamamIngredientArray = [];
 
+console.log("Hello World");
+
 // Saves personal API info.
 const spoonacularAPIKey = "b1e8d5af6d6f4efaaa60746bf1c9cd8c";
 const edamamAPIKey = "bcbb167d1766a0e612f1bb055f2ac680";
@@ -175,24 +177,31 @@ function edamamFetch() {
 
 // Attaches a click event to Spoon Search Button.
 $("#spoonSearchBtn").on("click", function () {
-  //gets values from local storage if no values make emprty array
-  spoonIngredientArray = JSON.parse(localStorage.getItem("spoonIngredientArray") || []);
+  // Retrieve or initialize the array from local storage.
+  spoonIngredientArray = JSON.parse(localStorage.getItem("spoonIngredientArray")) || [];
 
-  //gets values from input textarea and splits 
-  let newIngredient = $("#spoonIngredientInput").val().split(", ");
+  // Get new ingredients from input.
+  let newIngredients = $("#spoonIngredientInput").val().split(", ");
 
-  //add new data to array 
-  spoonIngredientArray = spoonIngredientArray.concat(newIngredient);
+  // Add new ingredients to the array and remove duplicates.
+  spoonIngredientArray = [...new Set(spoonIngredientArray.concat(newIngredients))];
 
-  //remove extra valuew form array 
-  spoonIngredientArray = [... new Set(spoonIngredientArray)];
-
-  //updating local storage with new values form search 
+  // Update local storage.
   localStorage.setItem("spoonIngredientArray", JSON.stringify(spoonIngredientArray));
 
-  //call the fetch function 
+  // Update dropdown with new values.
+  updateDropdown();
+
+  // Call the Fetch function.
   spoonFetch();
-  
+});
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  spoonIngredientArray = JSON.parse(localStorage.getItem("spoonIngredientArray")) || [];
+  edamamIngredientArray = JSON.parse(localStorage.getItem("edamamIngredientArray")) || [];
+  updateDropdown();
+  populateEdamamDropdown();
 });
 
 
@@ -209,52 +218,105 @@ function populateDropdown() {
       });
   }
 }
-//update dropdown
-function updateDropdown() {
-  const dropdown = document.getElementById("ingredientDropdown");
-  dropdown.innerHTML = ' '; // clear exusutubg iotuibs
 
-  //re-populate the dropdown 
+
+// Updates the dropdown with values from spoonIngredientArray
+function updateDropdown() {
+  const dropdown = document.getElementById('ingredientDropdown');
+  dropdown.innerHTML = ''; // Clear existing options
+
+  // Re-populate the dropdown
   spoonIngredientArray.forEach(ingredient => {
-    const option = document.createElement("option");
+    const option = document.createElement('option');
     option.value = ingredient;
+    option.textContent = ingredient;
     dropdown.appendChild(option);
   });
 }
-document.addEventListener('DOMContentLoaded', () => { 
-  spoonIngredientArray = JSON.parse(localStorage.getItem("spoonIngredientArray") || []);
+
+// Populate dropdown on page load
+document.addEventListener('DOMContentLoaded', function() {
+  // Load ingredients from local storage if available
+  spoonIngredientArray = JSON.parse(localStorage.getItem("spoonIngredientArray")) || [];
+  edamamIngredientArray = JSON.parse(localStorage.getItem("edamamIngredientArray")) || [];
+
   updateDropdown();
 });
-document.addEventListener('DOMContentLoaded', () => {
-  populateDropdown();
-});
-
-// Attaches a click event to Edamam Search Button.
-$("#edamamSearchBtn").on("click", function () {
-  // Fills the empty ingredient arrays with the users input.
-  edamamIngredientArray = $("#edamamIngredientInput").val().split(", ");
-  // Calls the Fetch function.
-  edamamFetch();
-});
 
 
-//attaches a change event listener
-document.getElementById('ingredientDropdown').addEventListener('change', function(){
-  //get the selected value
-  var selectedIngredient =  this.value;
 
-  //get the current content of the textarea
+
+// Attaches a change event listener to the dropdown
+document.getElementById('ingredientDropdown').addEventListener('change', function() {
+  // Get the selected value
+  var selectedIngredient = this.value;
+
+  // Get the current content of the textarea
   var currentText = document.getElementById('spoonIngredientInput').value;
 
-  //append the selected ingredient to the text area
+  // Append the selected ingredient to the textarea content
+  // You can modify the format of how it's appended as needed
   if (currentText.length > 0) {
-      currentText += ',  ';
+      currentText += ', ';
   }
+  
   currentText += selectedIngredient;
 
-  //update the text area
+  // Update the textarea with the new content
   document.getElementById('spoonIngredientInput').value = currentText;
 });
 
+document.getElementById('ingredientShopDropdown').addEventListener('change', function() {
+  // Get the selected value
+  var selectedIngredient = this.value;
+
+  // Get the current content of the Edamam textarea
+  var currentText = document.getElementById('edamamIngredientInput').value;
+
+  // Append the selected ingredient to the textarea content
+  if (currentText.length > 0) {
+      currentText += ', ';
+  }
+  currentText += selectedIngredient;
+
+  // Update the textarea with the new content
+  document.getElementById('edamamIngredientInput').value = currentText;
+});
+
+function updateEdamamDropdown() {
+  const dropdown = document.getElementById('ingredientShopDropdown');
+  dropdown.innerHTML = ''; // Clear existing options
+
+  edamamIngredientArray.forEach(ingredient => {
+    const option = document.createElement('option');
+    option.value = ingredient;
+    option.textContent = ingredient;
+    dropdown.appendChild(option);
+  });
+}
+
+function populateEdamamDropdown() {
+  const dropdown = document.getElementById('ingredientShopDropdown');
+  const ingredients = JSON.parse(localStorage.getItem('edamamIngredientArray'));
+
+  if (ingredients) {
+      dropdown.innerHTML = ''; // Clear existing options
+      ingredients.forEach(ingredient => {
+          const option = document.createElement('option');
+          option.value = ingredient;
+          option.textContent = ingredient;
+          dropdown.appendChild(option);
+      });
+  }
+}
 
 
+
+$("#edamamSearchBtn").on("click", function () {
+  edamamIngredientArray = JSON.parse(localStorage.getItem("edamamIngredientArray")) || [];
+  let newIngredients = $("#edamamIngredientInput").val().split(", ");
+  edamamIngredientArray = [...new Set(edamamIngredientArray.concat(newIngredients))];
+  localStorage.setItem("edamamIngredientArray", JSON.stringify(edamamIngredientArray));
+  updateEdamamDropdown();
+  edamamFetch();
+});
