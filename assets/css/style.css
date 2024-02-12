@@ -67,6 +67,11 @@
   display: inline-block;
 }
 
+textarea {
+  /* font-size: 35px; */
+  border: 2px solid rgb(255, 182, 193);  
+}
+
 .tooltip .tooltip-text {
   visibility: hidden;
   width: auto;

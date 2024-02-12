@@ -13,8 +13,8 @@
 
   <body class="color-secondary">
     <!-- Header-->
-    <header class="text-center p-5 color-primary text-5xl">
-      <h1 class="text-color-primary-dark">Recipe Creator</h1>
+    <header class="text-center p-5 color-primary">
+      <h1 class="text-6xl text-color-primary-dark">Recipe Creator</h1>
     </header>
 
     <!-- Main -->
@@ -32,12 +32,12 @@
           each ingredient with a comma and space.
         </p>
         <div class="flex flex-col items-center">
-        <textarea placeholder="Ingredients in Pantry" id="spoonIngredientInput" class="text-center w-1/2"></textarea>
+        <textarea rows="1" cols="100" placeholder="Chicken, carrots, celery..." id="spoonIngredientInput" class="text-center w-3/4 text-4xl"></textarea>
         <button
           id="spoonSearchBtn"
           class="mt-3 button color-primary-dark"
         >
-          Search
+          Generate Recipes
         </button>
         </div>
         <div id="spoonRecipes"></div>
@@ -55,12 +55,12 @@
           each ingredient with a comma and space.
         </p>
                 <div class="flex flex-col items-center">
-        <textarea placeholder="Ingredient to Build From" id="edamamIngredientInput" class="text-center w-1/2"></textarea>
+        <textarea rows="1" cols="100" placeholder="Chicken, carrots, celery..." id="edamamIngredientInput" class="text-center w-3/4 text-4xl"></textarea>
         <button
           id="edamamSearchBtn"
           class="mt-3 button color-primary-dark"
         >
-          Search
+          Generate Recipes
         </button>
         </div>
         <div id="edamamRecipes"></div>
@@ -69,10 +69,10 @@
       <!--pop up window -->
       <div id="popup" class="popup text-xl">
         <h2>Welcome to Recipe Creator!</h2>
-          <p> Click the icon below if you'd like to get a little adventurous,<br>and save yourself a trip to the grocery store!
+          <p> Tap this icon to generate<br>recipe ideas that only use ingredients you have available!
           </p> 
                   <img id="spoonOptionBtn" class="mx-auto h-36 welcome-image" src="assets/imgs/chef.png" />
-          <p> Click the icon below if you like to follow recipes,<br>and don't mind a quick trip to get just the right ingredients!
+          <p> Tap this icon to generate<br>chef-designed recipes based on your chosen ingredients!
           </p>
                   <img id="edamamOptionBtn" class="mx-auto h-36 welcome-image" src="assets/imgs/Cart.png" />
       </div>
