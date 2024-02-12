@@ -13,24 +13,29 @@
 
   <body class="color-secondary">
     <!-- Header-->
-    <header class="text-center text-3xl p-5 color-primary ">
-      <h1 class="text-color-pink text-6xl">Recipe Creator</h1>
+    <header class="text-center p-5 color-primary">
+      <h1 class="text-6xl text-color-primary-dark">Recipe Creator</h1>
     </header>
 
     <!-- Main -->
     <main>
 
       <!-- Spoon -->
-      <article id="spoon-side" class="text-center">
-        <img id="spoonBackBtn" class="mx-auto h-36" src="assets/imgs/Pantry.png" />
-        <p class="text-color-green">
-          <!-- Enter every ingredient you have available below.<br /> -->
+      <article id="spoon-side" class="text-center text-xl">
+        <p>Great Choice!</p>
+        <div class="tooltip">
+          <img id="spoonBackBtn" class="mx-auto h-36" src="assets/imgs/Pantry.png"/>
+          <span class="tooltip-text"> Did you change your mind? No prob... click the icon and go back!</span> 
+        </div>  
+        <p class="text-color-secondary-dark">
+          Enter every ingredient you have available below.<br />*Seperate
+          each ingredient with a comma and space.
         </p>
         <div class="flex flex-col items-center">
         <textarea rows="1" cols="100" placeholder="Chicken, carrots, celery..." id="spoonIngredientInput" class="text-center w-3/4 text-4xl"></textarea>
         <button
           id="spoonSearchBtn"
-          class="mt-3 button color-pink"
+          class="mt-3 button color-primary-dark"
         >
           Generate Recipes
         </button>
@@ -39,17 +44,21 @@
       </article>
                               
       <!-- Edamam -->
-      <article id="edamam-side" class="text-center">
-        <!-- <p>Great Choice!</p> -->
-        <img id="edamamBackBtn" class="mx-auto h-36" src="assets/imgs/Idea.png" />
-        <p class="text-color-green">
-          <!-- Enter any ingredients you would like to use below.<br /> -->
+      <article id="edamam-side" class="text-center text-xl">
+        <p>Great Choice!</p>
+        <div class="tooltip">
+          <img id="edamamBackBtn" class="mx-auto h-36" src="assets/imgs/Idea.png" />
+          <span class="tooltip-text">Did you change your mind? No prob... click the icon and go back!</span> 
+        </div>
+        <p class="text-color-secondary-dark">
+          Enter any ingredients you would like to use below.<br />*Seperate
+          each ingredient with a comma and space.
         </p>
                 <div class="flex flex-col items-center">
         <textarea rows="1" cols="100" placeholder="Chicken, carrots, celery..." id="edamamIngredientInput" class="text-center w-3/4 text-4xl"></textarea>
         <button
           id="edamamSearchBtn"
-          class="mt-3 button color-pink"
+          class="mt-3 button color-primary-dark"
         >
           Generate Recipes
         </button>
@@ -58,19 +67,19 @@
       </article>
 
       <!--pop up window -->
-      <div id="popup" class="popup">
-        <!-- <h2>Welcome to Recipe Creator!</h2> -->
+      <div id="popup" class="popup text-xl">
+        <h2>Welcome to Recipe Creator!</h2>
           <p> Tap this icon to generate<br>recipe ideas that only use ingredients you have available!
           </p> 
                   <img id="spoonOptionBtn" class="mx-auto h-36 welcome-image" src="assets/imgs/chef.png" />
-          <p> Tap this icon to generate <br>chef-designed recipes based on your chosen ingredients
+          <p> Tap this icon to generate<br>chef-designed recipes based on your chosen ingredients!
           </p>
                   <img id="edamamOptionBtn" class="mx-auto h-36 welcome-image" src="assets/imgs/Cart.png" />
       </div>
  
 
     <!-- Footer -->
-  <footer class="fixed bottom-0 p-5 w-screen text-center color-primary">
+  <footer class="fixed bottom-0 p-5 w-screen text-center color-primary text-sm">
     <h2>
     Created by Jesse Denier, Jenny Munar, Eddie Montoya, Claire Shipley, and
     Sadie Thongsavanh.</h2>
