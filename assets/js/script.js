@@ -2,6 +2,8 @@
 let spoonIngredientArray = [];
 let edamamIngredientArray = [];
 
+console.log("Hello World");
+
 // Saves personal API info.
 const spoonacularAPIKey = "b1e8d5af6d6f4efaaa60746bf1c9cd8c";
 const edamamAPIKey = "bcbb167d1766a0e612f1bb055f2ac680";
@@ -69,9 +71,11 @@ function spoonCreateCard(recipe) {
 
 // Takes the value created with the spoonSearchBtn click event and fetches the correct data.
 function spoonFetch() {
-  // Converts ingredientArray into a single string with the correct punctuation between each ingredient to be inserted as an API fetch parameter.
-  let spoonIngredientString = spoonIngredientArray.map(String).join(",+");
-  // Fetches data for recipes within the following parameters:
+  // Get new ingredients from the Spoonacular text area input.
+  let newIngredients = $("#spoonIngredientInput").val().split(", ");
+  // Convert the new ingredients into a string for the API call.
+  let spoonIngredientString = newIngredients.map(String).join(",+");
+// Fetches data for recipes within the following parameters:
   // List up to 100 recipes.
   // Order them by least amount of "missing ingredients."
   // Ignore pantry items like water, flour, salt in ingredient check.
@@ -139,9 +143,11 @@ function edamamCreateCard(recipe) {
 
 // Takes the value created with the edamamSearchBtn click event and fetches the correct data.
 function edamamFetch() {
-  // Converts ingredientArray into a single string with the correct punctuation between each ingredient to be inserted as an API fetch parameter.
-  let edamamIngredientString = edamamIngredientArray.map(String).join("%2C%20");
-  // Fetches data for recipes within the following parameters:
+  // Get new ingredients from the Edamam text area input.
+  let newIngredients = $("#edamamIngredientInput").val().split(", ");
+  // Convert the new ingredients into a string for the API call.
+  let edamamIngredientString = newIngredients.map(String).join("%2C%20");
+// Fetches data for recipes within the following parameters:
   // Only find public recipes.
   // Recipes need to involve the ingredient user inputed.
   fetch(
@@ -172,19 +178,148 @@ function edamamFetch() {
       });
     });
 }
-
 // Attaches a click event to Spoon Search Button.
 $("#spoonSearchBtn").on("click", function () {
-  // Fills the empty ingredient arrays with the users input.
-  spoonIngredientArray = $("#spoonIngredientInput").val().split(", ");
-  // Calls the Fetch function.
+  // Retrieve or initialize the array from local storage.
+  spoonIngredientArray = JSON.parse(localStorage.getItem("spoonIngredientArray")) || [];
+
+  // Get new ingredients from input.
+  let newIngredients = $("#spoonIngredientInput").val().split(", ");
+
+  // Add new ingredients to the array and remove duplicates.
+  spoonIngredientArray = [...new Set(spoonIngredientArray.concat(newIngredients))];
+
+  // Update local storage.
+  localStorage.setItem("spoonIngredientArray", JSON.stringify(spoonIngredientArray));
+
+  // Update dropdown with new values.
+  updateDropdown();
+
+  // Call the Fetch function.
   spoonFetch();
 });
 
-// Attaches a click event to Edamam Search Button.
+
+document.addEventListener('DOMContentLoaded', function() {
+  spoonIngredientArray = JSON.parse(localStorage.getItem("spoonIngredientArray")) || [];
+  edamamIngredientArray = JSON.parse(localStorage.getItem("edamamIngredientArray")) || [];
+  updateDropdown();
+  populateEdamamDropdown();
+});
+
+
+function populateDropdown() {
+  const dropdown = document.getElementById('ingredientDropdown');
+  const ingredients = JSON.parse(localStorage.getItem('spoonIngredientArray')); // Assuming 'ingredients' is your key in local storage
+
+  if (ingredients) {
+      ingredients.forEach(ingredient => {
+          const option = document.createElement('option');
+          option.value = ingredient;
+          option.textContent = ingredient;
+          dropdown.appendChild(option);
+      });
+  }
+}
+
+
+// Updates the dropdown with values from spoonIngredientArray
+function updateDropdown() {
+  const dropdown = document.getElementById('ingredientDropdown');
+  dropdown.innerHTML = ''; // Clear existing options
+
+  // Re-populate the dropdown
+  spoonIngredientArray.forEach(ingredient => {
+    const option = document.createElement('option');
+    option.value = ingredient;
+    option.textContent = ingredient;
+    dropdown.appendChild(option);
+  });
+}
+
+// Populate dropdown on page load
+document.addEventListener('DOMContentLoaded', function() {
+  // Load ingredients from local storage if available
+  spoonIngredientArray = JSON.parse(localStorage.getItem("spoonIngredientArray")) || [];
+  edamamIngredientArray = JSON.parse(localStorage.getItem("edamamIngredientArray")) || [];
+
+  updateDropdown();
+});
+
+
+
+
+// Attaches a change event listener to the dropdown
+document.getElementById('ingredientDropdown').addEventListener('change', function() {
+  // Get the selected value
+  var selectedIngredient = this.value;
+
+  // Get the current content of the textarea
+  var currentText = document.getElementById('spoonIngredientInput').value;
+
+  // Append the selected ingredient to the textarea content
+  // You can modify the format of how it's appended as needed
+  if (currentText.length > 0) {
+      currentText += ', ';
+  }
+  
+  currentText += selectedIngredient;
+
+  // Update the textarea with the new content
+  document.getElementById('spoonIngredientInput').value = currentText;
+});
+
+document.getElementById('ingredientShopDropdown').addEventListener('change', function() {
+  // Get the selected value
+  var selectedIngredient = this.value;
+
+  // Get the current content of the Edamam textarea
+  var currentText = document.getElementById('edamamIngredientInput').value;
+
+  // Append the selected ingredient to the textarea content
+  if (currentText.length > 0) {
+      currentText += ', ';
+  }
+  currentText += selectedIngredient;
+
+  // Update the textarea with the new content
+  document.getElementById('edamamIngredientInput').value = currentText;
+});
+
+function updateEdamamDropdown() {
+  const dropdown = document.getElementById('ingredientShopDropdown');
+  dropdown.innerHTML = ''; // Clear existing options
+
+  edamamIngredientArray.forEach(ingredient => {
+    const option = document.createElement('option');
+    option.value = ingredient;
+    option.textContent = ingredient;
+    dropdown.appendChild(option);
+  });
+}
+
+function populateEdamamDropdown() {
+  const dropdown = document.getElementById('ingredientShopDropdown');
+  const ingredients = JSON.parse(localStorage.getItem('edamamIngredientArray'));
+
+  if (ingredients) {
+      dropdown.innerHTML = ''; // Clear existing options
+      ingredients.forEach(ingredient => {
+          const option = document.createElement('option');
+          option.value = ingredient;
+          option.textContent = ingredient;
+          dropdown.appendChild(option);
+      });
+  }
+}
+
+
+
 $("#edamamSearchBtn").on("click", function () {
-  // Fills the empty ingredient arrays with the users input.
-  edamamIngredientArray = $("#edamamIngredientInput").val().split(", ");
-  // Calls the Fetch function.
+  edamamIngredientArray = JSON.parse(localStorage.getItem("edamamIngredientArray")) || [];
+  let newIngredients = $("#edamamIngredientInput").val().split(", ");
+  edamamIngredientArray = [...new Set(edamamIngredientArray.concat(newIngredients))];
+  localStorage.setItem("edamamIngredientArray", JSON.stringify(edamamIngredientArray));
+  updateEdamamDropdown();
   edamamFetch();
 });
