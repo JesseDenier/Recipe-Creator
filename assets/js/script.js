@@ -259,34 +259,30 @@ $("#edamamSearchBtn").on("click", function () {
 });
 
 // Attaches a change event listener to both dropdowns.
-document
-  .getElementById("spoonDropdown")
-  .addEventListener("change", function () {
-    // Get the selected value
-    var selectedIngredient = this.value;
-    // Get the current content of the textarea
-    var currentText = document.getElementById("spoonIngredientInput").value;
-    // Append the selected ingredient to the textarea content
-    // You can modify the format of how it's appended as needed
-    if (currentText.length > 0) {
-      currentText += ", ";
-    }
-    currentText += selectedIngredient;
-    // Update the textarea with the new content
-    document.getElementById("spoonIngredientInput").value = currentText;
-  });
-document
-  .getElementById("edamamDropdown")
-  .addEventListener("change", function () {
-    // Get the selected value
-    var selectedIngredient = this.value;
-    // Get the current content of the Edamam textarea
-    var currentText = document.getElementById("edamamIngredientInput").value;
-    // Append the selected ingredient to the textarea content
-    if (currentText.length > 0) {
-      currentText += ", ";
-    }
-    currentText += selectedIngredient;
-    // Update the textarea with the new content
-    document.getElementById("edamamIngredientInput").value = currentText;
-  });
+$("#spoonDropdown").on("change", function () {
+  // Get the selected value
+  var selectedIngredient = this.value;
+  // Get the current content of the textarea
+  var currentText = $("#spoonIngredientInput").value;
+  // Append the selected ingredient to the textarea content
+  // You can modify the format of how it's appended as needed
+  if (currentText.length > 0) {
+    currentText += ", ";
+  }
+  currentText += selectedIngredient;
+  // Update the textarea with the new content
+  $("#spoonIngredientInput").value = currentText;
+});
+$("#edamamDropdown").on("change", function () {
+  // Get the selected value
+  var selectedIngredient = this.value;
+  // Get the current content of the Edamam textarea
+  var currentText = $("#edamamIngredientInput").value;
+  // Append the selected ingredient to the textarea content
+  if (currentText.length > 0) {
+    currentText += ", ";
+  }
+  currentText += selectedIngredient;
+  // Update the textarea with the new content
+  $("#edamamIngredientInput").value = currentText;
+});
