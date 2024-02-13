@@ -16,7 +16,7 @@ Simply refer to the Recipe-Creator link to access the website.
 
 ## Usage
 
-To use the ingredients you have in your kitchen, refer to the left side of the the website and simply input your available ingredients and be sure to seperate each item with a comma and space. Then hit the search button and enjoy your home cooked meal!.
+To use the ingredients you have in your kitchen, refer to the left side of the the website and simply input your available ingredients and be sure to seperate each item with a comma and space. Then hit the search button and enjoy your home cooked meal!
 If you're feeling adventurous and want a more challenging and delicious recipe to make, refer to the right side of the website and simply input your available ingredients and have fun making your new delicous meal made entirely by you! 
 
 To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative filepath, add it to your README using the following syntax:
@@ -30,7 +30,7 @@ To add a screenshot, create an `assets/images` folder in your repository and upl
 
 Collaborators: Jesse Denier(https://github.com/JesseDenier), Claire Shipley(https://github.com/cshipley98), Saide Thongsavanh(https://github.com/sadiethongsavanh), Jennifer Munar(https://github.com/jennymunar), and Eddie Montoya(https://github.com/eimonto22)
 
-We used Spoonacular API(https://spoonacular.com/food-api) to help us retrieve all the information we need to make our Recipe Creator possibl and along side we used Edamam(https://www.edamam.com/)
+We used Spoonacular API(https://spoonacular.com/food-api) to help us retrieve all the information we need to make our Recipe Creator possible and along side we used Edamam(https://www.edamam.com/)
 
 
 ## License
@@ -63,7 +63,7 @@ SOFTWARE.
 
 ## Features
 
-If your project has a lot of features, list them here . Use eiher one of our two featured "Search" buttons to create amazing and delicous home cooked meals with the available indgredients you have in your home! Saving you a trip to the grocery and helping you discover new recipes and the touch of a buuton!
+If your project has a lot of features, list them here . Use either one of our two featured "Search" buttons to create amazing and delicous home cooked meals with the available indgredients you have in your home! Saving you a trip to the grocery and helping you discover new recipes and the touch of a buuton!
 
 
 ## Tests
