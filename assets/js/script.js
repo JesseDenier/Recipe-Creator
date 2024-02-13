@@ -120,6 +120,11 @@ function spoonFetch() {
   )
     // Converts that data into a JSON file which we can parse.
     .then(function (response) {
+      if (!response.ok) {
+        alert(
+          "There's been an error. Failed to fetch recipes. Please try again later."
+        );
+      }
       return response.json();
     })
     // Calls "spoonFilterRecipes," then console logs the result, and then calls "spoonCreateCard" for each recipe.
@@ -214,6 +219,11 @@ function edamamFetch() {
   )
     // Converts that data into a JSON file which we can parse.
     .then(function (response) {
+      if (!response.ok) {
+        alert(
+          "There's been an error. Failed to fetch recipes. Please try again later."
+        );
+      }
       return response.json();
     })
     //Console logs the result, and then calls "edamamCreateCard" for each recipe.
