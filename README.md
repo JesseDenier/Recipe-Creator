@@ -21,10 +21,11 @@ If you're feeling adventurous and want a more challenging and delicious recipe t
 
 To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative filepath, add it to your README using the following syntax:
 
-![homepage](assets/imgs/Recipecreator.png)
-    ```md
-    ![alt text](assets/images/screenshot.png)
-    ```
+
+https://github.com/JesseDenier/Recipe-Creator/assets/153382723/f8cd2bad-6e22-4030-b2b8-77b578b50cb1
+
+
+
 
 ## Credits
 
