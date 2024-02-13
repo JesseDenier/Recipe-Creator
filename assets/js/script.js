@@ -132,7 +132,7 @@ function spoonFetch() {
       let spoonFilteredRecipes = spoonFilterRecipes(data).slice(0, 6);
       if (spoonFilteredRecipes.length === 0) {
         alert(
-          "No recipes found. Please make sure each ingredient is spelled correctly and seperated by a comma and space."
+          "No recipes found. Please make sure each ingredient is spelled correctly and separated by a comma and space."
         );
       }
       console.log(spoonFilteredRecipes);
@@ -231,7 +231,7 @@ function edamamFetch() {
       let edamamFilteredRecipes = data.hits.slice(0, 6);
       if (edamamFilteredRecipes.length === 0) {
         alert(
-          "No recipes found. Please make sure each ingredient is spelled correctly and seperated by a comma and space."
+          "No recipes found. Please make sure each ingredient is spelled correctly and separated by a comma and space."
         );
       }
       console.log(edamamFilteredRecipes);
