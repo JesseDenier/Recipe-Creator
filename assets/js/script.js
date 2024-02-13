@@ -2,8 +2,6 @@
 let spoonIngredientArray = [];
 let edamamIngredientArray = [];
 
-console.log("Hello World");
-
 // Saves personal API info.
 const spoonacularAPIKey = "b1e8d5af6d6f4efaaa60746bf1c9cd8c";
 const edamamAPIKey = "bcbb167d1766a0e612f1bb055f2ac680";
@@ -75,7 +73,7 @@ function spoonFetch() {
   let newIngredients = $("#spoonIngredientInput").val().split(", ");
   // Convert the new ingredients into a string for the API call.
   let spoonIngredientString = newIngredients.map(String).join(",+");
-// Fetches data for recipes within the following parameters:
+  // Fetches data for recipes within the following parameters:
   // List up to 100 recipes.
   // Order them by least amount of "missing ingredients."
   // Ignore pantry items like water, flour, salt in ingredient check.
@@ -147,7 +145,7 @@ function edamamFetch() {
   let newIngredients = $("#edamamIngredientInput").val().split(", ");
   // Convert the new ingredients into a string for the API call.
   let edamamIngredientString = newIngredients.map(String).join("%2C%20");
-// Fetches data for recipes within the following parameters:
+  // Fetches data for recipes within the following parameters:
   // Only find public recipes.
   // Recipes need to involve the ingredient user inputed.
   fetch(
@@ -181,16 +179,22 @@ function edamamFetch() {
 // Attaches a click event to Spoon Search Button.
 $("#spoonSearchBtn").on("click", function () {
   // Retrieve or initialize the array from local storage.
-  spoonIngredientArray = JSON.parse(localStorage.getItem("spoonIngredientArray")) || [];
+  spoonIngredientArray =
+    JSON.parse(localStorage.getItem("spoonIngredientArray")) || [];
 
   // Get new ingredients from input.
   let newIngredients = $("#spoonIngredientInput").val().split(", ");
 
   // Add new ingredients to the array and remove duplicates.
-  spoonIngredientArray = [...new Set(spoonIngredientArray.concat(newIngredients))];
+  spoonIngredientArray = [
+    ...new Set(spoonIngredientArray.concat(newIngredients)),
+  ];
 
   // Update local storage.
-  localStorage.setItem("spoonIngredientArray", JSON.stringify(spoonIngredientArray));
+  localStorage.setItem(
+    "spoonIngredientArray",
+    JSON.stringify(spoonIngredientArray)
+  );
 
   // Update dropdown with new values.
   updateDropdown();
@@ -199,38 +203,37 @@ $("#spoonSearchBtn").on("click", function () {
   spoonFetch();
 });
 
-
-document.addEventListener('DOMContentLoaded', function() {
-  spoonIngredientArray = JSON.parse(localStorage.getItem("spoonIngredientArray")) || [];
-  edamamIngredientArray = JSON.parse(localStorage.getItem("edamamIngredientArray")) || [];
+document.addEventListener("DOMContentLoaded", function () {
+  spoonIngredientArray =
+    JSON.parse(localStorage.getItem("spoonIngredientArray")) || [];
+  edamamIngredientArray =
+    JSON.parse(localStorage.getItem("edamamIngredientArray")) || [];
   updateDropdown();
   populateEdamamDropdown();
 });
 
-
 function populateDropdown() {
-  const dropdown = document.getElementById('ingredientDropdown');
-  const ingredients = JSON.parse(localStorage.getItem('spoonIngredientArray')); // Assuming 'ingredients' is your key in local storage
+  const dropdown = document.getElementById("ingredientDropdown");
+  const ingredients = JSON.parse(localStorage.getItem("spoonIngredientArray")); // Assuming 'ingredients' is your key in local storage
 
   if (ingredients) {
-      ingredients.forEach(ingredient => {
-          const option = document.createElement('option');
-          option.value = ingredient;
-          option.textContent = ingredient;
-          dropdown.appendChild(option);
-      });
+    ingredients.forEach((ingredient) => {
+      const option = document.createElement("option");
+      option.value = ingredient;
+      option.textContent = ingredient;
+      dropdown.appendChild(option);
+    });
   }
 }
 
-
 // Updates the dropdown with values from spoonIngredientArray
 function updateDropdown() {
-  const dropdown = document.getElementById('ingredientDropdown');
-  dropdown.innerHTML = ''; // Clear existing options
+  const dropdown = document.getElementById("ingredientDropdown");
+  dropdown.innerHTML = ""; // Clear existing options
 
   // Re-populate the dropdown
-  spoonIngredientArray.forEach(ingredient => {
-    const option = document.createElement('option');
+  spoonIngredientArray.forEach((ingredient) => {
+    const option = document.createElement("option");
     option.value = ingredient;
     option.textContent = ingredient;
     dropdown.appendChild(option);
@@ -238,60 +241,63 @@ function updateDropdown() {
 }
 
 // Populate dropdown on page load
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener("DOMContentLoaded", function () {
   // Load ingredients from local storage if available
-  spoonIngredientArray = JSON.parse(localStorage.getItem("spoonIngredientArray")) || [];
-  edamamIngredientArray = JSON.parse(localStorage.getItem("edamamIngredientArray")) || [];
+  spoonIngredientArray =
+    JSON.parse(localStorage.getItem("spoonIngredientArray")) || [];
+  edamamIngredientArray =
+    JSON.parse(localStorage.getItem("edamamIngredientArray")) || [];
 
   updateDropdown();
 });
 
-
-
-
 // Attaches a change event listener to the dropdown
-document.getElementById('ingredientDropdown').addEventListener('change', function() {
-  // Get the selected value
-  var selectedIngredient = this.value;
+document
+  .getElementById("ingredientDropdown")
+  .addEventListener("change", function () {
+    // Get the selected value
+    var selectedIngredient = this.value;
 
-  // Get the current content of the textarea
-  var currentText = document.getElementById('spoonIngredientInput').value;
+    // Get the current content of the textarea
+    var currentText = document.getElementById("spoonIngredientInput").value;
 
-  // Append the selected ingredient to the textarea content
-  // You can modify the format of how it's appended as needed
-  if (currentText.length > 0) {
-      currentText += ', ';
-  }
-  
-  currentText += selectedIngredient;
+    // Append the selected ingredient to the textarea content
+    // You can modify the format of how it's appended as needed
+    if (currentText.length > 0) {
+      currentText += ", ";
+    }
 
-  // Update the textarea with the new content
-  document.getElementById('spoonIngredientInput').value = currentText;
-});
+    currentText += selectedIngredient;
 
-document.getElementById('ingredientShopDropdown').addEventListener('change', function() {
-  // Get the selected value
-  var selectedIngredient = this.value;
+    // Update the textarea with the new content
+    document.getElementById("spoonIngredientInput").value = currentText;
+  });
 
-  // Get the current content of the Edamam textarea
-  var currentText = document.getElementById('edamamIngredientInput').value;
+document
+  .getElementById("ingredientShopDropdown")
+  .addEventListener("change", function () {
+    // Get the selected value
+    var selectedIngredient = this.value;
 
-  // Append the selected ingredient to the textarea content
-  if (currentText.length > 0) {
-      currentText += ', ';
-  }
-  currentText += selectedIngredient;
+    // Get the current content of the Edamam textarea
+    var currentText = document.getElementById("edamamIngredientInput").value;
 
-  // Update the textarea with the new content
-  document.getElementById('edamamIngredientInput').value = currentText;
-});
+    // Append the selected ingredient to the textarea content
+    if (currentText.length > 0) {
+      currentText += ", ";
+    }
+    currentText += selectedIngredient;
+
+    // Update the textarea with the new content
+    document.getElementById("edamamIngredientInput").value = currentText;
+  });
 
 function updateEdamamDropdown() {
-  const dropdown = document.getElementById('ingredientShopDropdown');
-  dropdown.innerHTML = ''; // Clear existing options
+  const dropdown = document.getElementById("ingredientShopDropdown");
+  dropdown.innerHTML = ""; // Clear existing options
 
-  edamamIngredientArray.forEach(ingredient => {
-    const option = document.createElement('option');
+  edamamIngredientArray.forEach((ingredient) => {
+    const option = document.createElement("option");
     option.value = ingredient;
     option.textContent = ingredient;
     dropdown.appendChild(option);
@@ -299,27 +305,31 @@ function updateEdamamDropdown() {
 }
 
 function populateEdamamDropdown() {
-  const dropdown = document.getElementById('ingredientShopDropdown');
-  const ingredients = JSON.parse(localStorage.getItem('edamamIngredientArray'));
+  const dropdown = document.getElementById("ingredientShopDropdown");
+  const ingredients = JSON.parse(localStorage.getItem("edamamIngredientArray"));
 
   if (ingredients) {
-      dropdown.innerHTML = ''; // Clear existing options
-      ingredients.forEach(ingredient => {
-          const option = document.createElement('option');
-          option.value = ingredient;
-          option.textContent = ingredient;
-          dropdown.appendChild(option);
-      });
+    dropdown.innerHTML = ""; // Clear existing options
+    ingredients.forEach((ingredient) => {
+      const option = document.createElement("option");
+      option.value = ingredient;
+      option.textContent = ingredient;
+      dropdown.appendChild(option);
+    });
   }
 }
 
-
-
 $("#edamamSearchBtn").on("click", function () {
-  edamamIngredientArray = JSON.parse(localStorage.getItem("edamamIngredientArray")) || [];
+  edamamIngredientArray =
+    JSON.parse(localStorage.getItem("edamamIngredientArray")) || [];
   let newIngredients = $("#edamamIngredientInput").val().split(", ");
-  edamamIngredientArray = [...new Set(edamamIngredientArray.concat(newIngredients))];
-  localStorage.setItem("edamamIngredientArray", JSON.stringify(edamamIngredientArray));
+  edamamIngredientArray = [
+    ...new Set(edamamIngredientArray.concat(newIngredients)),
+  ];
+  localStorage.setItem(
+    "edamamIngredientArray",
+    JSON.stringify(edamamIngredientArray)
+  );
   updateEdamamDropdown();
   edamamFetch();
 });
