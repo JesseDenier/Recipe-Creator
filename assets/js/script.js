@@ -71,9 +71,11 @@ function spoonCreateCard(recipe) {
 
 // Takes the value created with the spoonSearchBtn click event and fetches the correct data.
 function spoonFetch() {
-  // Converts ingredientArray into a single string with the correct punctuation between each ingredient to be inserted as an API fetch parameter.
-  let spoonIngredientString = spoonIngredientArray.map(String).join(",+");
-  // Fetches data for recipes within the following parameters:
+  // Get new ingredients from the Spoonacular text area input.
+  let newIngredients = $("#spoonIngredientInput").val().split(", ");
+  // Convert the new ingredients into a string for the API call.
+  let spoonIngredientString = newIngredients.map(String).join(",+");
+// Fetches data for recipes within the following parameters:
   // List up to 100 recipes.
   // Order them by least amount of "missing ingredients."
   // Ignore pantry items like water, flour, salt in ingredient check.
@@ -141,9 +143,11 @@ function edamamCreateCard(recipe) {
 
 // Takes the value created with the edamamSearchBtn click event and fetches the correct data.
 function edamamFetch() {
-  // Converts ingredientArray into a single string with the correct punctuation between each ingredient to be inserted as an API fetch parameter.
-  let edamamIngredientString = edamamIngredientArray.map(String).join("%2C%20");
-  // Fetches data for recipes within the following parameters:
+  // Get new ingredients from the Edamam text area input.
+  let newIngredients = $("#edamamIngredientInput").val().split(", ");
+  // Convert the new ingredients into a string for the API call.
+  let edamamIngredientString = newIngredients.map(String).join("%2C%20");
+// Fetches data for recipes within the following parameters:
   // Only find public recipes.
   // Recipes need to involve the ingredient user inputed.
   fetch(
@@ -174,7 +178,6 @@ function edamamFetch() {
       });
     });
 }
-
 // Attaches a click event to Spoon Search Button.
 $("#spoonSearchBtn").on("click", function () {
   // Retrieve or initialize the array from local storage.
