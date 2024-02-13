@@ -28,7 +28,7 @@ To add a screenshot, create an `assets/images` folder in your repository and upl
 
 ## Credits
 
-Collaborators: Jesse Denier(https://github.com/JesseDenier), Claire Shipley(https://github.com/cshipley98), Saide Thongsavanh(https://github.com/sadiethongsavanh), Jennifer Munar(https://github.com/jennymunar), and Eddie Montoya(https://github.com/eimonto22)
+Collaborators: Jesse Denier(https://github.com/JesseDenier), Claire Shipley(https://github.com/cshipley98), Sadie Thongsavanh(https://github.com/sadiethongsavanh), Jennifer Munar(https://github.com/jennymunar), and Eddie Montoya(https://github.com/eimonto22)
 
 We used Spoonacular API(https://spoonacular.com/food-api) to help us retrieve all the information we need to make our Recipe Creator possibl and along side we used Edamam(https://www.edamam.com/)
 
