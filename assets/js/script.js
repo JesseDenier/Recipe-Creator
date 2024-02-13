@@ -34,26 +34,26 @@ $("#spoonBackBtn").on("click", showEdamam);
 
 // Updates the Spoon dropdown with values from spoonIngredientArray
 function updateSpoonDropdown() {
-  const dropdown = document.getElementById("spoonDropdown");
-  dropdown.innerHTML = ""; // Clear existing options
+  const dropdown = $("#spoonDropdown");
+  dropdown.empty(); // Clear existing options
   // Re-populate the dropdown
-  spoonIngredientArray.forEach((ingredient) => {
-    const option = document.createElement("option");
-    option.value = ingredient;
-    option.textContent = ingredient;
-    dropdown.appendChild(option);
+  $.each(spoonIngredientArray, function (index, ingredient) {
+    const option = $("<option></option>");
+    option.val(ingredient);
+    option.text(ingredient);
+    dropdown.append(option);
   });
 }
 
 // Updates the Edamam dropdown with values from edamamIngredientArray
 function updateEdamamDropdown() {
-  const dropdown = document.getElementById("edamamDropdown");
-  dropdown.innerHTML = ""; // Clear existing options
-  edamamIngredientArray.forEach((ingredient) => {
-    const option = document.createElement("option");
-    option.value = ingredient;
-    option.textContent = ingredient;
-    dropdown.appendChild(option);
+  const dropdown = $("#edamamDropdown");
+  dropdown.empty(); // Clear existing options
+  $.each(edamamIngredientArray, function (index, ingredient) {
+    const option = $("<option></option>");
+    option.val(ingredient);
+    option.text(ingredient);
+    dropdown.append(option);
   });
 }
 
@@ -261,9 +261,9 @@ $("#edamamSearchBtn").on("click", function () {
 // Attaches a change event listener to both dropdowns.
 $("#spoonDropdown").on("change", function () {
   // Get the selected value
-  var selectedIngredient = this.value;
+  var selectedIngredient = $(this).val();
   // Get the current content of the textarea
-  var currentText = $("#spoonIngredientInput").value;
+  var currentText = $("#spoonIngredientInput").val();
   // Append the selected ingredient to the textarea content
   // You can modify the format of how it's appended as needed
   if (currentText.length > 0) {
@@ -271,18 +271,18 @@ $("#spoonDropdown").on("change", function () {
   }
   currentText += selectedIngredient;
   // Update the textarea with the new content
-  $("#spoonIngredientInput").value = currentText;
+  $("#spoonIngredientInput").val(currentText);
 });
 $("#edamamDropdown").on("change", function () {
   // Get the selected value
-  var selectedIngredient = this.value;
+  var selectedIngredient = $(this).val();
   // Get the current content of the Edamam textarea
-  var currentText = $("#edamamIngredientInput").value;
+  var currentText = $("#edamamIngredientInput").val();
   // Append the selected ingredient to the textarea content
   if (currentText.length > 0) {
     currentText += ", ";
   }
   currentText += selectedIngredient;
   // Update the textarea with the new content
-  $("#edamamIngredientInput").value = currentText;
+  $("#edamamIngredientInput").val(currentText);
 });
