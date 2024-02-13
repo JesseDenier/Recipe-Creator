@@ -8,6 +8,13 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Links custom CSS. -->
     <link rel="stylesheet" href="assets/css/style.css" />
+    <!-- Links custom Fonts. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <title>Recipe Creator</title>
   </head>
 
@@ -25,10 +32,10 @@
         <p>Great Choice!</p>
         <div class="relative customtiparea">
           <img id="spoonBackBtn" class="w-[250px] lg:w-[500px] mx-auto md:w-[300px] h-auto object-contain" src="assets/imgs/Pantry.png"/>
-          <span class="text-center rounded p-1 whitespace-nowrap text-white color-primary customtiptext"> Did you change your mind? No prob... click the icon and go back!</span> 
+          <span class="text-center rounded p-1 whitespace-nowrap text-white color-primary customtiptext"> Tap here to use the other recipe search.</span> 
         </div>  
         <p class="text-color-secondary-dark">
-          Enter every ingredient you have available below.
+          Enter at least 10 ingredients you have available below.
         </p>
         <div class="flex flex-col items-center">
         <textarea rows="1" cols="100" placeholder="Chicken, carrots, celery..." id="spoonIngredientInput" class="text-center w-3/4 text-4xl border-2-primary"></textarea>
@@ -48,7 +55,7 @@
         <p>Great Choice!</p>
         <div class="relative customtiparea">
           <img id="edamamBackBtn" class="mx-auto px-8 lg:w-[500px] md:mx-auto md:w-[300px] w-[250px]" src="assets/imgs/Idea.png" />
-          <span class="text-center rounded p-1 whitespace-nowrap text-white color-primary customtiptext">Did you change your mind? No prob... click the icon and go back!</span> 
+          <span class="text-center rounded p-1 whitespace-nowrap text-white color-primary customtiptext">Tap here to use the other recipe search.</span> 
         </div>
         <p class="text-color-secondary-dark">
           Enter any ingredients you would like to use below.
@@ -78,6 +85,9 @@
             <img id="edamamOptionBtn" class="mx-auto h-36 m-3" src="assets/imgs/Cart.png" />
         </div>
       </div>
+
+      <!-- Blank area to allow fixed footer space.-->
+      <div class="h-24"></div>
 
       <!-- Footer -->
 <footer class="fixed bottom-0 p-5 w-screen text-center color-primary text-sm">
