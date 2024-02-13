@@ -34,7 +34,7 @@ $("#spoonBackBtn").on("click", showEdamam);
 
 // Updates the Spoon dropdown with values from spoonIngredientArray
 function updateSpoonDropdown() {
-  const dropdown = document.getElementById("ingredientDropdown");
+  const dropdown = document.getElementById("spoonDropdown");
   dropdown.innerHTML = ""; // Clear existing options
   // Re-populate the dropdown
   spoonIngredientArray.forEach((ingredient) => {
@@ -47,7 +47,7 @@ function updateSpoonDropdown() {
 
 // Updates the Edamam dropdown with values from edamamIngredientArray
 function updateEdamamDropdown() {
-  const dropdown = document.getElementById("ingredientShopDropdown");
+  const dropdown = document.getElementById("edamamDropdown");
   dropdown.innerHTML = ""; // Clear existing options
   edamamIngredientArray.forEach((ingredient) => {
     const option = document.createElement("option");
@@ -260,7 +260,7 @@ $("#edamamSearchBtn").on("click", function () {
 
 // Attaches a change event listener to both dropdowns.
 document
-  .getElementById("ingredientDropdown")
+  .getElementById("spoonDropdown")
   .addEventListener("change", function () {
     // Get the selected value
     var selectedIngredient = this.value;
@@ -276,7 +276,7 @@ document
     document.getElementById("spoonIngredientInput").value = currentText;
   });
 document
-  .getElementById("ingredientShopDropdown")
+  .getElementById("edamamDropdown")
   .addEventListener("change", function () {
     // Get the selected value
     var selectedIngredient = this.value;
