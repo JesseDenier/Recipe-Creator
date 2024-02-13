@@ -34,7 +34,7 @@ $("#spoonBackBtn").on("click", showEdamam);
 
 // Updates the Spoon dropdown with values from spoonIngredientArray
 function updateSpoonDropdown() {
-  const dropdown = document.getElementById("ingredientDropdown");
+  const dropdown = document.getElementById("spoonDropdown");
   dropdown.innerHTML = ""; // Clear existing options
   // Re-populate the dropdown
   spoonIngredientArray.forEach((ingredient) => {
@@ -47,7 +47,7 @@ function updateSpoonDropdown() {
 
 // Updates the Edamam dropdown with values from edamamIngredientArray
 function updateEdamamDropdown() {
-  const dropdown = document.getElementById("ingredientShopDropdown");
+  const dropdown = document.getElementById("edamamDropdown");
   dropdown.innerHTML = ""; // Clear existing options
   edamamIngredientArray.forEach((ingredient) => {
     const option = document.createElement("option");
@@ -259,34 +259,30 @@ $("#edamamSearchBtn").on("click", function () {
 });
 
 // Attaches a change event listener to both dropdowns.
-document
-  .getElementById("ingredientDropdown")
-  .addEventListener("change", function () {
-    // Get the selected value
-    var selectedIngredient = this.value;
-    // Get the current content of the textarea
-    var currentText = document.getElementById("spoonIngredientInput").value;
-    // Append the selected ingredient to the textarea content
-    // You can modify the format of how it's appended as needed
-    if (currentText.length > 0) {
-      currentText += ", ";
-    }
-    currentText += selectedIngredient;
-    // Update the textarea with the new content
-    document.getElementById("spoonIngredientInput").value = currentText;
-  });
-document
-  .getElementById("ingredientShopDropdown")
-  .addEventListener("change", function () {
-    // Get the selected value
-    var selectedIngredient = this.value;
-    // Get the current content of the Edamam textarea
-    var currentText = document.getElementById("edamamIngredientInput").value;
-    // Append the selected ingredient to the textarea content
-    if (currentText.length > 0) {
-      currentText += ", ";
-    }
-    currentText += selectedIngredient;
-    // Update the textarea with the new content
-    document.getElementById("edamamIngredientInput").value = currentText;
-  });
+$("#spoonDropdown").on("change", function () {
+  // Get the selected value
+  var selectedIngredient = this.value;
+  // Get the current content of the textarea
+  var currentText = $("#spoonIngredientInput").value;
+  // Append the selected ingredient to the textarea content
+  // You can modify the format of how it's appended as needed
+  if (currentText.length > 0) {
+    currentText += ", ";
+  }
+  currentText += selectedIngredient;
+  // Update the textarea with the new content
+  $("#spoonIngredientInput").value = currentText;
+});
+$("#edamamDropdown").on("change", function () {
+  // Get the selected value
+  var selectedIngredient = this.value;
+  // Get the current content of the Edamam textarea
+  var currentText = $("#edamamIngredientInput").value;
+  // Append the selected ingredient to the textarea content
+  if (currentText.length > 0) {
+    currentText += ", ";
+  }
+  currentText += selectedIngredient;
+  // Update the textarea with the new content
+  $("#edamamIngredientInput").value = currentText;
+});
