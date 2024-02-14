@@ -86,6 +86,22 @@
         </div>
       </div>
 
+      <!-- Fetch Error Pop Up-->
+      <div id="fetchErrorPopUp" class="hidden fixed top-0 left-0 w-full h-full flex justify-center items-center">
+        <div class="w-full text-center text-xl flex justify-center items-center color-primary border-30-primary-dark">
+          <p class="p-6">There's been an error. Failed to fetch recipes. Please try again later.</p>
+          <button id="fetchErrorReturnBtn" class="pb-6 mt-3 p-4 rounded color-primary-dark text-lg text-white hover:text-black">Try Again</button>
+        </div>
+      </div>
+
+      <!-- User Error Pop Up-->
+      <div id="userErrorPopUp" class="hidden fixed top-0 left-0 w-full h-full flex justify-center items-center">
+        <div class="w-full text-center text-xl color-primary border-30-primary-dark">
+          <p class="p-6">No recipes found. Please make sure each ingredient is spelled correctly and separated by a comma and space.</p>
+          <button id="userErrorReturnBtn" class="mb-6 mt-3 p-4 rounded color-primary-dark text-lg text-white hover:text-black">Try Again</button>
+        </div>
+      </div>
+
       <!-- Blank area to allow fixed footer space.-->
       <div class="h-24"></div>
 

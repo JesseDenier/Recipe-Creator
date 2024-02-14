@@ -121,9 +121,7 @@ function spoonFetch() {
     // Converts that data into a JSON file which we can parse.
     .then(function (response) {
       if (!response.ok) {
-        alert(
-          "There's been an error. Failed to fetch recipes. Please try again later."
-        );
+        $("#fetchErrorPopUp").show();
       }
       return response.json();
     })
@@ -131,9 +129,7 @@ function spoonFetch() {
     .then(function (data) {
       let spoonFilteredRecipes = spoonFilterRecipes(data).slice(0, 6);
       if (spoonFilteredRecipes.length === 0) {
-        alert(
-          "No recipes found. Please make sure each ingredient is spelled correctly and separated by a comma and space."
-        );
+        $("#userErrorPopUp").show();
       }
       console.log(spoonFilteredRecipes);
       // Removes all content from spoonRecipes so it can be replaced.
@@ -220,9 +216,7 @@ function edamamFetch() {
     // Converts that data into a JSON file which we can parse.
     .then(function (response) {
       if (!response.ok) {
-        alert(
-          "There's been an error. Failed to fetch recipes. Please try again later."
-        );
+        $("#fetchErrorPopUp").show();
       }
       return response.json();
     })
@@ -230,9 +224,7 @@ function edamamFetch() {
     .then(function (data) {
       let edamamFilteredRecipes = data.hits.slice(0, 6);
       if (edamamFilteredRecipes.length === 0) {
-        alert(
-          "No recipes found. Please make sure each ingredient is spelled correctly and separated by a comma and space."
-        );
+        $("#userErrorPopUp").show();
       }
       console.log(edamamFilteredRecipes);
       // Removes all content from edamamRecipes so it can be replaced.
@@ -285,4 +277,12 @@ $("#edamamDropdown").on("change", function () {
   currentText += selectedIngredient;
   // Update the textarea with the new content
   $("#edamamIngredientInput").val(currentText);
+});
+
+// Hides error modals after button clicks.
+$("#fetchErrorReturnBtn").on("click", function () {
+  $("#fetchErrorPopUp").hide();
+});
+$("#userErrorReturnBtn").on("click", function () {
+  $("#userErrorPopUp").hide();
 });
