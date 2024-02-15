@@ -12,6 +12,8 @@ The Recipe Creator is a fun and interactive website that creates easy to make re
 ## Installation
 Simply refer to the Recipe-Creator link to access the website.
 
+## Deployeed Application
+https://jessedenier.github.io/Recipe-Creator/
 
 ## Usage
 Tap on the chef icon if you want recipe ideas with the ingredients you have available on hand. With this option, you will need to enter at least 10 ingredients... or tap in the shopping cart to generate chef-designated recipes based on your chosen ingredients.
